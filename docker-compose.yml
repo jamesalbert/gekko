@@ -3,9 +3,9 @@ services:
   gekko:
     restart: always
     build: ./
+    entrypoint: /usr/src/app/docker-entrypoint.sh
     volumes:
-      - ./volumes/gekko/history:/usr/src/app/history
-      - ./config.js:/usr/src/app/config.js
+      - ./:/usr/src/app
     links:
       - redis
 #      - postgresql
