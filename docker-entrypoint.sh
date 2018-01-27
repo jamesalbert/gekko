@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -d /node_modules ]; then
-  mv /node_modules .
+  mv /node_modules /usr/src/app
 fi
 
 sed -i 's/127.0.0.1/0.0.0.0/g' /usr/src/app/web/vue/UIconfig.js
