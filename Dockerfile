@@ -10,4 +10,7 @@ ADD package.json /package.json
 RUN npm install --production && \
     npm install --production redis@0.10.0 talib@1.0.2 tulind@0.8.7 pg && \
     npm cache clean --force
+
+ADD optimizer/requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
 WORKDIR /usr/src/app
