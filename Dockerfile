@@ -1,4 +1,4 @@
-FROM node:8
+FROM jamesalbert/node8-python36
 
 ENV HOST localhost
 ENV PORT 3000
