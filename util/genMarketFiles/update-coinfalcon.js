@@ -37,9 +37,9 @@ request(options)
   })
   .then(markets => {
     fs.writeFileSync('../../exchanges/coinfalcon-markets.json', JSON.stringify(markets, null, 2));
-    console.log(`Done writing CoinFalcon market data`);
+//     console.log(`Done writing CoinFalcon market data`);
   })
   .catch(err => {
-    console.log(`Couldn't import products from CoinFalcon`);
-    console.log(err);
+//     console.log(`Couldn't import products from CoinFalcon`);
+//     console.log(err);
   });

@@ -229,7 +229,7 @@ Base.prototype.propogateTick = function(candle) {
     isPremature = false;
 
   if(isAllowedToCheck && !isPremature) {
-    this.log(candle);
+//     this.log(candle);
     this.check(candle);
   }
   this.processedTicks++;

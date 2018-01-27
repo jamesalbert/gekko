@@ -44,7 +44,7 @@ Trader.prototype.getTrades = function(since, cb) {
     }
   });
 
-  console.log(
+//   console.log(
     `[EXCHANGE SIMULATOR] emitted ${amount} fake trades, up until ${this.at.format('YYYY-MM-DD HH:mm:ss')}.`
   );
 
@@ -70,4 +70,3 @@ Trader.getCapabilities = function () {
 }
 
 module.exports = Trader;
-

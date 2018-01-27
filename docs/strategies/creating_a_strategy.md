@@ -123,7 +123,7 @@ This a basic strategy example that buys and sells BTC/USDT when it hits a specif
         if(candle.close <= this.buyPrice) {
             this.advice("long");
             // do some output
-            console.log("buying BTC @", candle.close);
+//             console.log("buying BTC @", candle.close);
             return;
         }
         
@@ -131,8 +131,8 @@ This a basic strategy example that buys and sells BTC/USDT when it hits a specif
         if(candle.close >= this.sellPrice) {
             this.advice("short");
             // do some output
-            console.log("selling BTC @", candle.close);
-            console.log("Profit:", (candle.close-this.buyPrice));
+//             console.log("selling BTC @", candle.close);
+//             console.log("Profit:", (candle.close-this.buyPrice));
             return;
         }
     }

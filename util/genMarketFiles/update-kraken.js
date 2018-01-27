@@ -132,11 +132,11 @@ Promise.all([assetPromise, assetPairsPromise])
   })
   .then(markets => {
     fs.writeFileSync('../../exchanges/kraken-markets.json', JSON.stringify(markets, null, 2));
-    console.log(`Done writing Kraken market data`);
+//     console.log(`Done writing Kraken market data`);
   })
   .catch(err => {
-    console.log(`Couldn't import products from Kraken`);
-    console.log(err);
+//     console.log(`Couldn't import products from Kraken`);
+//     console.log(err);
   });
 
   

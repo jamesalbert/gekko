@@ -94,20 +94,20 @@ var util = {
   },
   die: function(m, soft) {
     if(_gekkoEnv === 'standalone' || !_gekkoEnv)
-      var log = console.log.bind(console);
+//       var log = console.log.bind(console);
     else if(_gekkoEnv === 'child-process')
       var log = m => process.send({type: 'error', error: m});
 
     if(m) {
       if(soft) {
-        log('\n ERROR: ' + m + '\n\n');
+//         log('\n ERROR: ' + m + '\n\n');
       } else {
-        log('\n\nGekko encountered an error and can\'t continue');
-        log('\nError:\n');
-        log(m, '\n\n');
-        log('\nMeta debug info:\n');
-        log(util.logVersion());
-        log('');
+//         log('\n\nGekko encountered an error and can\'t continue');
+//         log('\nError:\n');
+//         log(m, '\n\n');
+//         log('\nMeta debug info:\n');
+//         log(util.logVersion());
+//         log('');
       }
     }
     process.exit(1);

@@ -165,7 +165,7 @@ Trader.prototype.checkOrder = function(order, callback) {
 }
 
 Trader.prototype.getOrder = function(orderId, callback) {
-  console.log('getOrder', orderId);
+//   console.log('getOrder', orderId);
   var args = _.toArray(arguments);
   var check = function(err, result) {
     if(err) {

@@ -41,9 +41,9 @@ request(options)
   })
   .then(markets => {
     fs.writeFileSync('../../exchanges/binance-markets.json', JSON.stringify(markets, null, 2));
-    console.log(`Done writing Binance market data`);
+//     console.log(`Done writing Binance market data`);
   })
   .catch(err => {
-    console.log(`Couldn't import products from Binance`);
-    console.log(err);
+//     console.log(`Couldn't import products from Binance`);
+//     console.log(err);
   });

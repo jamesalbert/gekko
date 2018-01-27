@@ -18,7 +18,7 @@ module.exports = done => {
                 let [exchange, type] = collection.split('_');
                 if (type === 'candles') {
                     handle.collection(collection).distinct('pair', {}, (err, pairs) => {
-                        console.log(exchange);
+//                         console.log(exchange);
                         pairs.forEach((pair) => {
                             pair = pair.split('_');
                             markets.push({

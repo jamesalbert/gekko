@@ -15,7 +15,7 @@ module.exports = cb => {
       }
 
       else if(message.type === 'log')
-        console.log(message.log);
+//         console.log(message.log);
     },
     exit: status => {
       if(status !== 0)

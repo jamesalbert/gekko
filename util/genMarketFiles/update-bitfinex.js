@@ -44,11 +44,11 @@ request({
 })
 .then(markets => {
   fs.writeFileSync('../../exchanges/bitfinex-markets.json', JSON.stringify(markets, null, 2));
-  console.log(`Done writing Bitfinex market data`);
+//   console.log(`Done writing Bitfinex market data`);
 })
 .catch(err => {
-  console.log(`Couldn't import products from Bitfinex`);
-  console.log(err);
+//   console.log(`Couldn't import products from Bitfinex`);
+//   console.log(err);
 });
 
   

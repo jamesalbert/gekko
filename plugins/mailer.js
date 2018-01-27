@@ -18,7 +18,7 @@ var Mailer = function(done) {
 Mailer.prototype.setup = function(done) {
   var setupMail = function(err, result) {
     if(result) {
-      console.log('Got it.');
+//       console.log('Got it.');
       mailConfig.password = result.password;
     }
 
