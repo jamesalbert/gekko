@@ -10,6 +10,7 @@ const mode = util.gekkoMode();
 const config = util.getConfig();
 const calcConfig = config.paperTrader;
 const log = require(dirs.core + 'log');
+console.log("TEST")
 
 const Logger = function(watchConfig) {
   this.currency = watchConfig.currency;
