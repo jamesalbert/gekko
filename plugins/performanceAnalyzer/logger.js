@@ -72,23 +72,23 @@ if(mode === 'backtest') {
     var at = trade.date.format('YYYY-MM-DD HH:mm:ss');
 
 
-    if(trade.action === 'sell')
-
-        log.info(
-          `${at}: Paper trader simulated a SELL`,
-          `\t${this.round(trade.portfolio.currency)}`,
-          `${this.currency} <= ${this.round(trade.portfolio.asset)}`,
-          `${this.asset}`
-        );
-
-    else if(trade.action === 'buy')
-
-      log.info(
-        `${at}: Paper trader simulated a BUY`,
-        `\t${this.round(trade.portfolio.currency)}`,
-        `${this.currency}\t=> ${this.round(trade.portfolio.asset)}`,
-        `${this.asset}`
-      );
+    // if(trade.action === 'sell')
+    //
+    //     log.info(
+    //       `${at}: Paper trader simulated a SELL`,
+    //       `\t${this.round(trade.portfolio.currency)}`,
+    //       `${this.currency} <= ${this.round(trade.portfolio.asset)}`,
+    //       `${this.asset}`
+    //     );
+    //
+    // else if(trade.action === 'buy')
+    //
+    //   log.info(
+    //     `${at}: Paper trader simulated a BUY`,
+    //     `\t${this.round(trade.portfolio.currency)}`,
+    //     `${this.currency}\t=> ${this.round(trade.portfolio.asset)}`,
+    //     `${this.asset}`
+    //   );
   }
 
   Logger.prototype.finalize = function(report) {
