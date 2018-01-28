@@ -10,7 +10,6 @@ const mode = util.gekkoMode();
 const config = util.getConfig();
 const calcConfig = config.paperTrader;
 const log = require(dirs.core + 'log');
-console.log("TEST")
 
 const Logger = function(watchConfig) {
   this.currency = watchConfig.currency;
@@ -33,6 +32,7 @@ Logger.prototype.handleStartBalance = function() {
 Logger.prototype.logReport = function(trade, report) {
   // ignore the trade
 
+  console.log("TEST")
   var start = this.round(report.startBalance);
   var current = this.round(report.balance);
 
