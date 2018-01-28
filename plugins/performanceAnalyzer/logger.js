@@ -37,10 +37,10 @@ Logger.prototype.logReport = function(trade, report) {
 
 //   log.info(`(PROFIT REPORT) original simulated balance:\t ${start} ${this.currency}`);
 //   log.info(`(PROFIT REPORT) current simulated balance:\t ${current} ${this.currency}`);
-//   log.info(
-  //   `(PROFIT REPORT) simulated profit:\t\t ${this.round(report.profit)} ${this.currency}`,
-  //   `(${this.round(report.relativeProfit)}%)`
-  // );
+  log.info(
+    `(PROFIT REPORT) simulated profit:\t\t ${this.round(report.profit)} ${this.currency}`,
+    `(${this.round(report.relativeProfit)}%)`
+  );
 }
 
 Logger.prototype.logRoundtripHeading = function() {
@@ -109,7 +109,7 @@ if(mode === 'backtest') {
 //     log.info(`(PROFIT REPORT) end price:\t\t\t ${report.endPrice} ${this.currency}`);
 //     log.info(`(PROFIT REPORT) Market:\t\t\t\t ${this.round(report.market)}%`);
 //     log.info();
-//     log.info(`(PROFIT REPORT) amount of trades:\t\t ${report.trades}`);
+    log.info(`(PROFIT REPORT) amount of trades:\t\t ${report.trades}`);
 
     this.logReport(null, report);
 
