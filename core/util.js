@@ -93,9 +93,9 @@ var util = {
     + `\nNodejs version: ${process.version}`;
   },
   die: function(m, soft) {
-    if(_gekkoEnv === 'standalone' || !_gekkoEnv)
+    //if(_gekkoEnv === 'standalone' || !_gekkoEnv)
 //       var log = console.log.bind(console);
-    else if(_gekkoEnv === 'child-process')
+    if(_gekkoEnv === 'child-process')
       var log = m => process.send({type: 'error', error: m});
 
     if(m) {
@@ -183,7 +183,7 @@ var util = {
       minTimeout: 1 * 1000,
       maxTimeout: 3 * 1000
     };
- 
+
     retryHelper(fn, operation, callback);
   },
   retryCustom: function(options, fn, callback) {
