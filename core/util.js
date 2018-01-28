@@ -93,9 +93,9 @@ var util = {
     + `\nNodejs version: ${process.version}`;
   },
   die: function(m, soft) {
-    //if(_gekkoEnv === 'standalone' || !_gekkoEnv)
-//       var log = console.log.bind(console);
-    if(_gekkoEnv === 'child-process')
+    if(_gekkoEnv === 'standalone' || !_gekkoEnv)
+      var log = console.log.bind(console);
+    else if(_gekkoEnv === 'child-process')
       var log = m => process.send({type: 'error', error: m});
 
     if(m) {

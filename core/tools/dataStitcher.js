@@ -47,10 +47,10 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
   this.reader = new Reader;
 
 //   log.info(
-    '\tThe trading method requests',
-    requiredHistory,
-    'minutes of historic data. Checking availablity..'
-  );
+  //   '\tThe trading method requests',
+  //   requiredHistory,
+  //   'minutes of historic data. Checking availablity..'
+  // );
 
   var endTime = moment().utc().startOf('minute');
   var idealStartTime = endTime.clone().subtract(requiredHistory, 'm');
@@ -119,21 +119,21 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
         // we can combine local data with exchange data
         if(idealStartTime.unix() >= localData.from) {
 //           log.info(
-            '\tFull history locally available.',
-            'Seeding the trading method with all required historical candles.'
-          );
+          //   '\tFull history locally available.',
+          //   'Seeding the trading method with all required historical candles.'
+          // );
 
         } else {
 
           // stitchable but not enough
 
 //           log.info(
-            '\tPartial history locally available, but',
-            Math.round((localData.from - idealStartTime.unix()) / 60),
-            'minutes are missing.')
+            // '\tPartial history locally available, but',
+            // Math.round((localData.from - idealStartTime.unix()) / 60),
+            // 'minutes are missing.')
 //           log.info('\tSeeding the trading method with',
-            'partial historical data (Gekko needs more time before',
-            'it can give advice).'
+            // 'partial historical data (Gekko needs more time before',
+            // 'it can give advice).'
           );
         }
 
@@ -153,17 +153,17 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
 //         log.debug('\tUnable to stitch datasets.')
         // we cannot use any local data..
 //         log.info(
-          '\tNot seeding locally available data to the trading method.'
-        );
+        //   '\tNot seeding locally available data to the trading method.'
+        // );
 
         if(exchangeData.from < idealExchangeStartTimeTS) {
 //           log.info('\tHowever the exchange returned enough data anyway!');
         } else if(localData) {
 //           log.info(
-            '\tThe exchange does not return enough data.',
-            Math.round((localData.from - idealStartTime.unix()) / 60),
-            'minutes are still missing.'
-          );
+          //   '\tThe exchange does not return enough data.',
+          //   Math.round((localData.from - idealStartTime.unix()) / 60),
+          //   'minutes are still missing.'
+          // );
         }
       }
 

@@ -16,9 +16,9 @@ if(daterange.to) {
 } else {
   var to = moment().utc();
 //   log.debug(
-    'No end date specified for importing, setting to',
-    to.format('YYYY-MM-DD HH:mm:ss')
-  );
+  //   'No end date specified for importing, setting to',
+  //   to.format('YYYY-MM-DD HH:mm:ss')
+  // );
 }
 
 if(!from.isValid())
@@ -73,7 +73,7 @@ var Market = function() {
   this.candleManager.on(
     'candles',
     this.pushCandles
-  );  
+  );
 
   Readable.call(this, {objectMode: true});
 
