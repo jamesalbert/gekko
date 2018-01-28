@@ -1,8 +1,8 @@
-// 
-// The fetcher is responsible for fetching new 
+//
+// The fetcher is responsible for fetching new
 // market data at the exchange on interval. It will emit
 // the following events:
-// 
+//
 // - `trades batch` - all new trades.
 // - `trade` - the most recent trade after every fetch
 
@@ -25,7 +25,7 @@ var Fetcher = function(config) {
   var DataProvider = require(util.dirs().gekko + 'exchanges/' + provider);
   _.bindAll(this);
 
-  // Create a public dataProvider object which can retrieve live 
+  // Create a public dataProvider object which can retrieve live
   // trade information from an exchange.
   this.watcher = new DataProvider(config.watch);
 
@@ -51,9 +51,9 @@ var Fetcher = function(config) {
   ].join('/');
 
 //   log.info('Starting to watch the market:',
-    this.exchange.name,
-    this.pair
-  );
+  //   this.exchange.name,
+  //   this.pair
+  // );
 
   // if the exchange returns an error
   // we will keep on retrying until next

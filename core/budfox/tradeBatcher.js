@@ -1,6 +1,6 @@
-// 
+//
 // Small wrapper that only propogates new trades.
-// 
+//
 // Expects trade batches to be written like:
 // [
 //  {
@@ -16,7 +16,7 @@
 //    amount: x
 //  }
 // ]
-// 
+//
 // Emits 'new trades' event with:
 // {
 //   amount: x,
@@ -25,7 +25,7 @@
 //   first: (trade),
 //   last: (trade)
 //   data: [
-//      // batch of new trades with 
+//      // batch of new trades with
 //      // moments instead of timestamps
 //   ]
 // }
@@ -66,14 +66,14 @@ TradeBatcher.prototype.write = function(batch) {
   var first = _.first(momentBatch);
 
 //   log.debug(
-    'Processing', amount, 'new trades.',
-    'From',
-    first.date.format('YYYY-MM-DD HH:mm:ss'),
-    'UTC to',
-    last.date.format('YYYY-MM-DD HH:mm:ss'),
-    'UTC.',
-    '(' + first.date.from(last.date, true) + ')'
-  );
+  //   'Processing', amount, 'new trades.',
+  //   'From',
+  //   first.date.format('YYYY-MM-DD HH:mm:ss'),
+  //   'UTC to',
+  //   last.date.format('YYYY-MM-DD HH:mm:ss'),
+  //   'UTC.',
+  //   '(' + first.date.from(last.date, true) + ')'
+  // );
 
   this.emit('new batch', {
     amount: amount,

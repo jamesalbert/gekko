@@ -8,7 +8,7 @@ function find-prints {
 }
 
 function find-logs {
-    grep 'performanceAnalyzer' -rinI --exclude-dir=web --exclude-dir=node_modules . 2>&1 \
+    grep 'require.*' -rinI --exclude-dir=web --exclude-dir=node_modules . 2>&1 \
         | grep -vE 'remove-prints|No such file|build\.js|prettier' \
         | cut -d: -f1,2,3-
 }
