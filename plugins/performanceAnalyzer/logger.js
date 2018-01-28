@@ -74,20 +74,20 @@ if(mode === 'backtest') {
     if(trade.action === 'sell')
 
 //         log.info(
-          `${at}: Paper trader simulated a SELL`,
-          `\t${this.round(trade.portfolio.currency)}`,
-          `${this.currency} <= ${this.round(trade.portfolio.asset)}`,
-          `${this.asset}`
-        );
+        //   `${at}: Paper trader simulated a SELL`,
+        //   `\t${this.round(trade.portfolio.currency)}`,
+        //   `${this.currency} <= ${this.round(trade.portfolio.asset)}`,
+        //   `${this.asset}`
+        // );
 
     else if(trade.action === 'buy')
 
 //       log.info(
-        `${at}: Paper trader simulated a BUY`,
-        `\t${this.round(trade.portfolio.currency)}`,
-        `${this.currency}\t=> ${this.round(trade.portfolio.asset)}`,
-        `${this.asset}`
-      );
+      //   `${at}: Paper trader simulated a BUY`,
+      //   `\t${this.round(trade.portfolio.currency)}`,
+      //   `${this.currency}\t=> ${this.round(trade.portfolio.asset)}`,
+      //   `${this.asset}`
+      // );
   }
 
   Logger.prototype.finalize = function(report) {
@@ -102,7 +102,7 @@ if(mode === 'backtest') {
 //     log.info(`(PROFIT REPORT) start time:\t\t\t ${report.startTime}`);
 //     log.info(`(PROFIT REPORT) end time:\t\t\t ${report.endTime}`);
 //     log.info(`(PROFIT REPORT) timespan:\t\t\t ${report.timespan}`);
-    if(report.sharpe)
+    // if(report.sharpe)
 //       log.info(`(PROFIT REPORT) sharpe ratio:\t\t\t ${report.sharpe}`);
 //     log.info();
 //     log.info(`(PROFIT REPORT) start price:\t\t\t ${report.startPrice} ${this.currency}`);
@@ -114,9 +114,9 @@ if(mode === 'backtest') {
     this.logReport(null, report);
 
 //     log.info(
-      `(PROFIT REPORT) simulated yearly profit:\t ${report.yearlyProfit}`,
-      `${this.currency} (${report.relativeYearlyProfit}%)`
-    );
+    //   `(PROFIT REPORT) simulated yearly profit:\t ${report.yearlyProfit}`,
+    //   `${this.currency} (${report.relativeYearlyProfit}%)`
+    // );
   }
 
   Logger.prototype.handleRoundtrip = function(rt) {
