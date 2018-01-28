@@ -16,7 +16,6 @@ if(ENV === 'child-process')
 else
   Handler = require('./logger');
 
-console.log('TEST 2')
 const PerformanceAnalyzer = function() {
   _.bindAll(this);
 

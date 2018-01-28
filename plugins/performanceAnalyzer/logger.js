@@ -32,7 +32,6 @@ Logger.prototype.handleStartBalance = function() {
 Logger.prototype.logReport = function(trade, report) {
   // ignore the trade
 
-  console.log("TEST")
   var start = this.round(report.startBalance);
   var current = this.round(report.balance);
 
@@ -92,7 +91,6 @@ if(mode === 'backtest') {
   }
 
   Logger.prototype.finalize = function(report) {
-    console.log("TEST 1")
 
 //     log.info();
 //     log.info('(ROUNDTRIP) REPORT:');
