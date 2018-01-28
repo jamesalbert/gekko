@@ -38,9 +38,9 @@ Logger.prototype.logReport = function(trade, report) {
 //   log.info(`(PROFIT REPORT) original simulated balance:\t ${start} ${this.currency}`);
 //   log.info(`(PROFIT REPORT) current simulated balance:\t ${current} ${this.currency}`);
 //   log.info(
-    `(PROFIT REPORT) simulated profit:\t\t ${this.round(report.profit)} ${this.currency}`,
-    `(${this.round(report.relativeProfit)}%)`
-  );
+  //   `(PROFIT REPORT) simulated profit:\t\t ${this.round(report.profit)} ${this.currency}`,
+  //   `(${this.round(report.relativeProfit)}%)`
+  // );
 }
 
 Logger.prototype.logRoundtripHeading = function() {
