@@ -92,6 +92,7 @@ if(mode === 'backtest') {
   }
 
   Logger.prototype.finalize = function(report) {
+    console.log("TEST 1")
 
 //     log.info();
 //     log.info('(ROUNDTRIP) REPORT:');
