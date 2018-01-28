@@ -16,6 +16,7 @@ const Logger = function(watchConfig) {
   this.asset = watchConfig.asset;
 
   this.roundtrips = [];
+  console.log('TEST 3')
 }
 
 Logger.prototype.round = function(amount) {

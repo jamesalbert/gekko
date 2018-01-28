@@ -8,9 +8,9 @@ function find-prints {
 }
 
 function find-logs {
-    grep 'log.DEBUG\|log.info\|log.err' -rinI --exclude-dir=web --exclude-dir=node_modules . 2>&1 \
+    grep 'performanceAnalyzer' -rinI --exclude-dir=web --exclude-dir=node_modules . 2>&1 \
         | grep -vE 'remove-prints|No such file|build\.js|prettier' \
-        | cut -d: -f1,2
+        | cut -d: -f1,2,3-
 }
 
 function comment-out-prints {
@@ -23,7 +23,7 @@ function comment-out-prints {
 }
 
 
-#find-logs
+find-logs
 #find-prints
 #echo -e "\n\n"
-comment-out-prints
+#comment-out-prints
