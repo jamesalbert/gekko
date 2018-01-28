@@ -71,7 +71,7 @@ if(mode === 'backtest') {
     var at = trade.date.format('YYYY-MM-DD HH:mm:ss');
 
 
-    if(trade.action === 'sell')
+    // if(trade.action === 'sell')
 
 //         log.info(
         //   `${at}: Paper trader simulated a SELL`,
@@ -80,7 +80,7 @@ if(mode === 'backtest') {
         //   `${this.asset}`
         // );
 
-    else if(trade.action === 'buy')
+    // else if(trade.action === 'buy')
 
 //       log.info(
       //   `${at}: Paper trader simulated a BUY`,
