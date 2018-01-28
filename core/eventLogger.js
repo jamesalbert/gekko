@@ -15,14 +15,14 @@ _.each(subscriptions, function(subscription) {
       log.empty();
 
     if(_.has(e, 'data'))
-      log.debug(
+//       log.debug(
         '\tnew event:',
         subscription.event,
         '(' + _.size(e.data),
         'items)'
       );
     else
-      log.debug(
+//       log.debug(
         '\tnew event:',
         subscription.event
       );

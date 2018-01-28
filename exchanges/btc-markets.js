@@ -21,7 +21,7 @@ var Trader = function(config) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -82,7 +82,7 @@ Trader.prototype.getFee = function(callback) {
     else if(!err && !_.isEmpty(data.errorMessage))
       err = data.errorMessage;
     if(err){
-      log.error('unable to retrieve fee', err, ' retrying...');
+//       log.error('unable to retrieve fee', err, ' retrying...');
       return this.retry(this.getFee, args);
     }
     data.tradingFeeRate /= this.priceDivider;
@@ -102,7 +102,7 @@ Trader.prototype.buy = function(amount, price, callback) {
     else if(!err && !_.isEmpty(data.errorMessage))
       err = data.errorMessage;
     if(err)
-      return log.error('unable to buy', err);
+//       return log.error('unable to buy', err);
     callback(null, data.id);
   }.bind(this);
   this.btcmakets.createOrder(
@@ -127,7 +127,7 @@ Trader.prototype.sell = function(amount, price, callback) {
     else if(!err && !_.isEmpty(data.errorMessage))
       err = data.errorMessage;
     if(err)
-      return log.error('unable to sell', err)
+//       return log.error('unable to sell', err)
     callback(null, data.id);
   }.bind(this);
   this.btcmakets.createOrder(
@@ -155,7 +155,7 @@ Trader.prototype.checkOrder = function(order, callback) {
     else if(!err && !_.isEmpty(data.errorMessage))
       err = data.errorMessage;
     if(err){
-      return log.error('unable to check order: ', order, '(', err ,'), retrying...');
+//       return log.error('unable to check order: ', order, '(', err ,'), retrying...');
        this.retry(this.checkOrder, args);
     }
     var placed = !_.isEmpty(data.orders)
@@ -174,7 +174,7 @@ Trader.prototype.getOrder = function(order, callback) {
     else if(!err && !_.isEmpty(data.errorMessage))
       err = data.errorMessage;
     if(err){
-      return log.error('unable to get order detail: ', order, '(', err ,'), retrying...');
+//       return log.error('unable to get order detail: ', order, '(', err ,'), retrying...');
       this.retry(this.getOrder, args);
     }
     var price = parseFloat(data.orders[0].price);
@@ -196,7 +196,7 @@ Trader.prototype.cancelOrder = function(order, callback) {
     else if(!err && !_.isEmpty(data.errorMessage))
       err = data.errorMessage;
     if(err){
-       return log.error('unable to cancel order: ',order, '(', err, '), retrying...');
+//        return log.error('unable to cancel order: ',order, '(', err, '), retrying...');
        this.retry(this.cancelOrder, args);
     }
     callback();

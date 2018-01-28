@@ -40,7 +40,7 @@ var Trader = function(config) {
     'cleartext': false
   });
 
-  log.debug('Init', 'New Bittrex Trader', {currency: this.currency, asset: this.asset});
+//   log.debug('Init', 'New Bittrex Trader', {currency: this.currency, asset: this.asset});
 
   this.bittrexApi = Bittrex;
 }
@@ -49,7 +49,7 @@ var Trader = function(config) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying.', args);
+//   log.debug(this.name, 'returned an error, retrying.', args);
 
   var self = this;
 
@@ -70,11 +70,11 @@ Trader.prototype.retry = function(method, args) {
 
 Trader.prototype.getPortfolio = function(callback) {
   var args = _.toArray(arguments);
-  log.debug('getPortfolio', 'called');
+//   log.debug('getPortfolio', 'called');
 
   var set = function(data, err) {
     if(err) {
-      log.error('getPortfolio', 'Error', err);
+//       log.error('getPortfolio', 'Error', err);
       return this.retry(this.getPortfolio, args);
     }
 
@@ -105,9 +105,9 @@ Trader.prototype.getPortfolio = function(callback) {
       !_.isNumber(assetAmount) || _.isNaN(assetAmount) ||
       !_.isNumber(currencyAmount) || _.isNaN(currencyAmount)
     ) {
-      log.info('asset:', this.asset);
-      log.info('currency:', this.currency);
-      log.info('exchange data:', data);
+//       log.info('asset:', this.asset);
+//       log.info('currency:', this.currency);
+//       log.info('exchange data:', data);
       util.die('Gekko was unable to set the portfolio');
     }
 
@@ -116,7 +116,7 @@ Trader.prototype.getPortfolio = function(callback) {
       { name: this.currency, amount: currencyAmount }
     ];
 
-    log.debug('getPortfolio', 'result:', portfolio);
+//     log.debug('getPortfolio', 'result:', portfolio);
 
     callback(err, portfolio);
   }.bind(this);
@@ -127,7 +127,7 @@ Trader.prototype.getPortfolio = function(callback) {
 Trader.prototype.getTicker = function(callback) {
   var args = _.toArray(arguments);
 
-  log.debug('getTicker', 'called');
+//   log.debug('getTicker', 'called');
 
   this.bittrexApi.getticker({market: this.pair}, function(data, err) {
     if(err)
@@ -135,7 +135,7 @@ Trader.prototype.getTicker = function(callback) {
 
     var tick = data.result;
 
-    log.debug('getTicker', 'result', tick);
+//     log.debug('getTicker', 'result', tick);
 
     callback(null, {
       bid: parseFloat(tick.Bid),
@@ -147,7 +147,7 @@ Trader.prototype.getTicker = function(callback) {
 
 Trader.prototype.getFee = function(callback) {
 
-  log.debug('getFee', 'called');
+//   log.debug('getFee', 'called');
   /*var set = function(data, err) {
     if(err || data.error)
       return callback(err || data.error);
@@ -170,25 +170,25 @@ Trader.prototype.getFee = function(callback) {
 Trader.prototype.buy = function(amount, price, callback) {
   var args = _.toArray(arguments);
 
-  log.debug('buy', 'called', {amount: amount, price: price});
+//   log.debug('buy', 'called', {amount: amount, price: price});
   var set = function(result, err) {
     if(err || result.error) {
       if(err && err.message === 'INSUFFICIENT_FUNDS') {
           // retry with the already reduced amount, will be reduced again in the recursive call
-          log.error('Error buy ' , 'INSUFFICIENT_FUNDS', err );
+//           log.error('Error buy ' , 'INSUFFICIENT_FUNDS', err );
           // correct the amount to avoid an INSUFFICIENT_FUNDS exception
           var correctedAmount = amount - (0.00255*amount);
-          log.debug('buy', 'corrected amount', {amount: correctedAmount, price: price});
+//           log.debug('buy', 'corrected amount', {amount: correctedAmount, price: price});
          return this.retry(this.buy, [correctedAmount, price, callback]);
       } else if (err && err.message === 'DUST_TRADE_DISALLOWED_MIN_VALUE_50K_SAT') {
         callback(null, 'dummyOrderId');
         return;
       }
-      log.error('unable to buy:', {err: err, result: result});
+//       log.error('unable to buy:', {err: err, result: result});
       return this.retry(this.buy, args);
     }
 
-    log.debug('buy', 'result', result);
+//     log.debug('buy', 'result', result);
     callback(null, result.result.uuid);
   }.bind(this);
 
@@ -198,11 +198,11 @@ Trader.prototype.buy = function(amount, price, callback) {
 Trader.prototype.sell = function(amount, price, callback) {
   var args = _.toArray(arguments);
 
-  log.debug('sell', 'called', {amount: amount, price: price});
+//   log.debug('sell', 'called', {amount: amount, price: price});
 
   var set = function(result, err) {
     if(err || result.error) {
-       log.error('unable to sell:',  {err: err, result: result});
+//        log.error('unable to sell:',  {err: err, result: result});
 
        if(err && err.message === 'DUST_TRADE_DISALLOWED_MIN_VALUE_50K_SAT') {
          callback(null, 'dummyOrderId');
@@ -212,7 +212,7 @@ Trader.prototype.sell = function(amount, price, callback) {
       return this.retry(this.sell, args);
     }
 
-    log.debug('sell', 'result', result);
+//     log.debug('sell', 'result', result);
 
     callback(null, result.result.uuid);
   }.bind(this);
@@ -222,11 +222,11 @@ Trader.prototype.sell = function(amount, price, callback) {
 
 Trader.prototype.checkOrder = function(order, callback) {
   var check = function(result, err) {
-    log.debug('checkOrder', 'called');
+//     log.debug('checkOrder', 'called');
 
     var stillThere = _.find(result.result, function(o) { return o.OrderUuid === order });
 
-    log.debug('checkOrder', 'result', stillThere);
+//     log.debug('checkOrder', 'result', stillThere);
     callback(err, !stillThere);
   }.bind(this);
 
@@ -237,7 +237,7 @@ Trader.prototype.getOrder = function(order, callback) {
 
   var get = function(result, err) {
 
-    log.debug('getOrder', 'called');
+//     log.debug('getOrder', 'called');
 
     if(err)
       return callback(err);
@@ -260,7 +260,7 @@ Trader.prototype.getOrder = function(order, callback) {
        date = moment(resultOrder.Closed);
     }
 
-    log.debug('getOrder', 'result', {price, amount, date});
+//     log.debug('getOrder', 'result', {price, amount, date});
     callback(err, {price, amount, date});
   }.bind(this);
 
@@ -270,24 +270,24 @@ Trader.prototype.getOrder = function(order, callback) {
 Trader.prototype.cancelOrder = function(order, callback) {
   var args = _.toArray(arguments);
   var cancel = function(result, err) {
-    log.debug('cancelOrder', 'called', order);
+//     log.debug('cancelOrder', 'called', order);
 
     if(err) {
       if(err.success) {
-          log.error('unable to cancel order', order, '(', err, result, '), retrying');
+//           log.error('unable to cancel order', order, '(', err, result, '), retrying');
           return this.retry(this.cancelOrder, args);
       } else {
-          log.error('unable to cancel order', order, '(', err, result, '), continue');
+//           log.error('unable to cancel order', order, '(', err, result, '), continue');
           callback();
           return;
       }
     }
 
     if(!result.success && result.message === 'ORDER_NOT_OPEN') {
-      log.debug('getOrder', 'ORDER_NOT_OPEN: assuming already closed or executed');
+//       log.debug('getOrder', 'ORDER_NOT_OPEN: assuming already closed or executed');
     }
 
-    log.debug('getOrder', 'result', result);
+//     log.debug('getOrder', 'result', result);
 
     callback();
   }.bind(this);
@@ -297,14 +297,14 @@ Trader.prototype.cancelOrder = function(order, callback) {
 
 Trader.prototype.getTrades = function(since, callback, descending) {
 
-  log.debug('getTrades called!', { descending: descending} );
+//   log.debug('getTrades called!', { descending: descending} );
 
   var firstFetch = !!since;
 
   var args = _.toArray(arguments);
   var process = function(data, err) {
     if(err) {
-      log.error('Error getTrades()', err)
+//       log.error('Error getTrades()', err)
       return this.retry(this.getTrades, args);
     }
 

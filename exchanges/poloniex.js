@@ -30,7 +30,7 @@ var Trader = function(config) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -62,9 +62,9 @@ Trader.prototype.getPortfolio = function(callback) {
       !_.isNumber(assetAmount) || _.isNaN(assetAmount) ||
       !_.isNumber(currencyAmount) || _.isNaN(currencyAmount)
     ) {
-      log.info('asset:', this.asset);
-      log.info('currency:', this.currency);
-      log.info('exchange data:', data);
+//       log.info('asset:', this.asset);
+//       log.info('currency:', this.currency);
+//       log.info('exchange data:', data);
       util.die('Gekko was unable to set the portfolio');
     }
 
@@ -109,7 +109,7 @@ Trader.prototype.buy = function(amount, price, callback) {
   var args = _.toArray(arguments);
   var set = function(err, result) {
     if(err || result.error) {
-      log.error('unable to buy:', err, result);
+//       log.error('unable to buy:', err, result);
       return this.retry(this.buy, args);
     }
 
@@ -123,7 +123,7 @@ Trader.prototype.sell = function(amount, price, callback) {
   var args = _.toArray(arguments);
   var set = function(err, result) {
     if(err || result.error) {
-      log.error('unable to sell:', err, result);
+//       log.error('unable to sell:', err, result);
       return this.retry(this.sell, args);
     }
 
@@ -179,7 +179,7 @@ Trader.prototype.cancelOrder = function(order, callback) {
       return callback(true);
 
     if(err || !result.success) {
-      log.error('unable to cancel order', order, '(', err, result, '), retrying');
+//       log.error('unable to cancel order', order, '(', err, result, '), retrying');
       return this.retry(this.cancelOrder, args);
     }
 

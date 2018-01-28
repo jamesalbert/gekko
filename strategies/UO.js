@@ -30,9 +30,9 @@ method.log = function(candle) {
   var digits = 8;
   var uo = this.indicators.uo;
 
-  log.debug('calculated Ultimate Oscillator properties for candle:');
-  log.debug('\t', 'UO:', uo.uo.toFixed(digits));
-  log.debug('\t', 'price:', candle.close.toFixed(digits));
+//   log.debug('calculated Ultimate Oscillator properties for candle:');
+//   log.debug('\t', 'UO:', uo.uo.toFixed(digits));
+//   log.debug('\t', 'price:', candle.close.toFixed(digits));
 }
 
 method.check = function() {
@@ -52,7 +52,7 @@ method.check = function() {
 
     this.trend.duration++;
 
-    log.debug('In high since', this.trend.duration, 'candle(s)');
+//     log.debug('In high since', this.trend.duration, 'candle(s)');
 
     if(this.trend.duration >= this.settings.thresholds.persistence)
       this.trend.persisted = true;
@@ -76,7 +76,7 @@ method.check = function() {
 
     this.trend.duration++;
 
-    log.debug('In low since', this.trend.duration, 'candle(s)');
+//     log.debug('In low since', this.trend.duration, 'candle(s)');
 
     if(this.trend.duration >= this.settings.thresholds.persistence)
       this.trend.persisted = true;
@@ -89,7 +89,7 @@ method.check = function() {
 
   } else {
 
-    log.debug('In no trend');
+//     log.debug('In no trend');
 
     this.advice();
   }

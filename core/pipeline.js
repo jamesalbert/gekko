@@ -164,8 +164,8 @@ var pipeline = (settings) => {
       next();
   }
 
-  log.info('Setting up Gekko in', mode, 'mode');
-  log.info('');
+//   log.info('Setting up Gekko in', mode, 'mode');
+//   log.info('');
 
   async.series(
     [

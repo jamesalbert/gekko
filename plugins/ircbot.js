@@ -147,7 +147,7 @@ Actor.prototype.emitRealAdvice = function() {
 }
 
 Actor.prototype.logError = function(message) {
-  log.error('IRC ERROR:', message);
+//   log.error('IRC ERROR:', message);
 };
 
 

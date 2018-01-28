@@ -207,7 +207,7 @@ Adjust method execution by creating custom configuration parameters.  This way t
 Retrieve them in your method like this:
 
     // anywhere in your code:
-    log.debug(this.settings.my_custom_setting); // Logs 10
+//     log.debug(this.settings.my_custom_setting); // Logs 10
 
 ___Note that the name of your configuration must be the same as the name of the strategy___
 
@@ -229,7 +229,7 @@ Gekko has a small logger you can use (preferably in your log method):
     var log = require('../core/log.js');
 
     // in your log method
-    log.debug('hello world');
+//     log.debug('hello world');
 
 
 -----

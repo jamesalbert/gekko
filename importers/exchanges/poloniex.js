@@ -61,7 +61,7 @@ var done = false;
 var fetcher = new Fetcher(config.watch);
 
 var fetch = () => {
-  log.info(
+//   log.info(
     config.watch.currency,
     config.watch.asset,
     'Requesting data from',
@@ -120,6 +120,3 @@ module.exports = function (daterange) {
     fetch: fetch
   }
 }
-
-
-

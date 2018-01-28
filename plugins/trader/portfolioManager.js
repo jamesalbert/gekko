@@ -46,7 +46,7 @@ var Manager = function(conf) {
   this.keepAsset = 0;
 
   if(_.isNumber(conf.keepAsset)) {
-    log.debug('Keep asset is active. Will try to keep at least ' + conf.keepAsset + ' ' + conf.asset);
+//     log.debug('Keep asset is active. Will try to keep at least ' + conf.keepAsset + ' ' + conf.asset);
     this.keepAsset = conf.keepAsset;
   }
 
@@ -58,12 +58,12 @@ var Manager = function(conf) {
 util.makeEventEmitter(Manager);
 
 Manager.prototype.init = function(callback) {
-  log.debug('getting ticker, balance & fee from', this.exchange.name);
+//   log.debug('getting ticker, balance & fee from', this.exchange.name);
   var prepare = function() {
     this.starting = false;
 
-    log.info('trading at', this.exchange.name, 'ACTIVE');
-    log.info(this.exchange.name, 'trading fee will be:', this.fee * 100 + '%');
+//     log.info('trading at', this.exchange.name, 'ACTIVE');
+//     log.info(this.exchange.name, 'trading fee will be:', this.fee * 100 + '%');
     this.logPortfolio();
 
     callback();
@@ -87,7 +87,7 @@ Manager.prototype.setPortfolio = function(callback) {
         let item = _.find(fullPortfolio, {name});
 
         if(!item) {
-          log.debug(`Unable to find "${name}" in portfolio provided by exchange, assuming 0.`);
+//           log.debug(`Unable to find "${name}" in portfolio provided by exchange, assuming 0.`);
           item = {name, amount: 0};
         }
 
@@ -204,7 +204,7 @@ Manager.prototype.buy = function(amount, price) {
       );
     }
 
-    log.info(
+//     log.info(
       'Attempting to BUY',
       order.amount,
       this.asset,
@@ -244,7 +244,7 @@ Manager.prototype.sell = function(amount, price) {
       );
     }
 
-    log.info(
+//     log.info(
       'Attempting to SELL',
       order.amount,
       this.asset,
@@ -293,13 +293,13 @@ Manager.prototype.cancelLastOrder = function(done) {
 Manager.prototype.checkOrder = function() {
   var handleCheckResult = function(err, filled) {
     if(!filled) {
-      log.info(this.action, 'order was not (fully) filled, cancelling and creating new order');
+//       log.info(this.action, 'order was not (fully) filled, cancelling and creating new order');
       this.exchange.cancelOrder(_.last(this.orders), _.bind(handleCancelResult, this));
 
       return;
     }
 
-    log.info(this.action, 'was successfull');
+//     log.info(this.action, 'was successfull');
 
     this.relayOrder();
   }
@@ -311,7 +311,7 @@ Manager.prototype.checkOrder = function() {
     if(this.exchangeMeta.forceReorderDelay) {
         //We need to wait in case a canceled order has already reduced the amount
         var wait = 10;
-        log.debug(`Waiting ${wait} seconds before starting a new trade on ${this.exchangeMeta.name}!`);
+//         log.debug(`Waiting ${wait} seconds before starting a new trade on ${this.exchangeMeta.name}!`);
 
         setTimeout(
             () => this.trade(this.action, true),
@@ -388,9 +388,9 @@ Manager.prototype.relayOrder = function(done) {
 }
 
 Manager.prototype.logPortfolio = function() {
-  log.info(this.exchange.name, 'portfolio:');
+//   log.info(this.exchange.name, 'portfolio:');
   _.each(this.portfolio, function(fund) {
-    log.info('\t', fund.name + ':', parseFloat(fund.amount).toFixed(12));
+//     log.info('\t', fund.name + ':', parseFloat(fund.amount).toFixed(12));
   });
 };
 

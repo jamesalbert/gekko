@@ -23,7 +23,7 @@ method.update = function(candle) {
 // for debugging purposes log the last
 // calculated parameters.
 method.log = function() {
-    log.debug(
+//     log.debug(
 `---------------------
 Tulip ADX: ${this.adx}
 Tulip MACD: ${this.macd}
@@ -43,13 +43,13 @@ method.check = function() {
 
     // combining all indicators with AND
     if(all_long){
-        log.debug(`tulip-multi-strat In low`);
+//         log.debug(`tulip-multi-strat In low`);
         this.advice('long');
     }else if(all_short){
-        log.debug(`tulip-multi-strat In high`);
+//         log.debug(`tulip-multi-strat In high`);
         this.advice('short');
     }else{
-        log.debug(`tulip-multi-strat In no trend`);
+//         log.debug(`tulip-multi-strat In no trend`);
         this.advice();
     }
 }

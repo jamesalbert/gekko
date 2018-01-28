@@ -36,14 +36,14 @@ Trader.prototype.processCandle = (candle, done) => done();
 
 Trader.prototype.processAdvice = function(advice) {
   if(advice.recommendation == 'long') {
-    log.info(
+//     log.info(
       'Trader',
       'Received advice to go long.',
       'Buying ', config.trader.asset
     );
     this.manager.trade('BUY');
   } else if(advice.recommendation == 'short') {
-    log.info(
+//     log.info(
       'Trader',
       'Received advice to go short.',
       'Selling ', config.trader.asset

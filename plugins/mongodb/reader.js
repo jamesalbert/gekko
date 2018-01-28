@@ -26,13 +26,13 @@ Reader.prototype.mostRecentWindow = function mostRecentWindow (from, to, next) {
     }
     // no candles are available
     if (docs.length === 0) {
-      log.debug('no candles are available');
+//       log.debug('no candles are available');
       return next(false);
     }
 
     if (docs.length === maxAmount) {
       // full history is available!
-      log.debug('full history is available!');
+//       log.debug('full history is available!');
       return next({
         mFrom,
         mTo

@@ -18,7 +18,7 @@ var Indicator = function(settings) {
       this.x.push(i);
   }
 
-  // log.debug("Created LRC indicator with h: ", this.depth);
+//   // log.debug("Created LRC indicator with h: ", this.depth);
 }
 
 Indicator.prototype.update = function(price) {
@@ -29,7 +29,7 @@ Indicator.prototype.update = function(price) {
     this.history[this.age] = price;
     this.age++;
     this.result = false;
-     // log.debug("Waiting for sufficient age: ", this.age, " out of ", this.depth); 
+//      // log.debug("Waiting for sufficient age: ", this.age, " out of ", this.depth); 
     //
     return;
   }
@@ -44,7 +44,7 @@ Indicator.prototype.update = function(price) {
   this.calculate(price);
 
 
-  // log.debug("Checking LRC: ", this.result.toFixed(8), "\tH: ", this.age);
+//   // log.debug("Checking LRC: ", this.result.toFixed(8), "\tH: ", this.age);
   return;
 }
 

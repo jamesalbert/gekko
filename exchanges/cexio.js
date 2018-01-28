@@ -46,15 +46,15 @@ Trader.prototype.buy = function(amount, price, callback) {
   amount = Math.floor(amount);
   amount /= 100000000;
 
-  log.debug('BUY', amount, this.asset, '@', price, this.currency);
+//   log.debug('BUY', amount, this.asset, '@', price, this.currency);
 
   var set = function(err, data) {
     if(err)
-      return log.error('unable to buy:', err);
+//       return log.error('unable to buy:', err);
     if(data.error)
-      return log.error('unable to buy:', data.error);
+//       return log.error('unable to buy:', data.error);
 
-    log.debug('BUY order placed.  Order ID', data.id);
+//     log.debug('BUY order placed.  Order ID', data.id);
     callback(null, data.id);
   };
 
@@ -71,15 +71,15 @@ Trader.prototype.sell = function(amount, price, callback) {
   // test placing orders which will not be filled
   //price *= 10; price = price.toFixed(8);
 
-  log.debug('SELL', amount, this.asset, '@', price, this.currency);
+//   log.debug('SELL', amount, this.asset, '@', price, this.currency);
 
   var set = function(err, data) {
     if(err)
-      return log.error('unable to sell:', err);
+//       return log.error('unable to sell:', err);
     if(data.error)
-      return log.error('unable to sell:', data.error);
+//       return log.error('unable to sell:', data.error);
 
-    log.debug('SELL order placed.  Order ID', data.id);
+//     log.debug('SELL order placed.  Order ID', data.id);
     callback(null, data.id);
   };
 
@@ -88,10 +88,10 @@ Trader.prototype.sell = function(amount, price, callback) {
 
 Trader.prototype.retry = function(method, args, err) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..', err, 'waiting for', wait, 'ms');
+//   log.debug(this.name, 'returned an error, retrying..', err, 'waiting for', wait, 'ms');
 
   if (!_.isFunction(method)) {
-    log.error(this.name, 'failed to retry, no method supplied.');
+//     log.error(this.name, 'failed to retry, no method supplied.');
     return;
   }
 
@@ -176,9 +176,9 @@ Trader.prototype.checkOrder = function(order, callback) {
 Trader.prototype.cancelOrder = function(order) {
   var check= function(err, result) {
     if(err)
-      log.error('cancel order failed:', err);
+//       log.error('cancel order failed:', err);
     if(typeof(result) !== 'undefined' && result.error)
-      log.error('cancel order failed:', result.error);
+//       log.error('cancel order failed:', result.error);
   }
   this.cexio.cancel_order(order, check);
 }
@@ -208,4 +208,3 @@ Trader.getCapabilities = function () {
 }
 
 module.exports = Trader;
-

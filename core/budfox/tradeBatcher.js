@@ -52,20 +52,20 @@ TradeBatcher.prototype.write = function(batch) {
     throw 'batch is not an array';
 
   if(_.isEmpty(batch))
-    return log.debug('Trade fetch came back empty.');
+//     return log.debug('Trade fetch came back empty.');
 
   var filterBatch = this.filter(batch);
 
   var amount = _.size(filterBatch);
   if(!amount)
-    return log.debug('No new trades.');
+//     return log.debug('No new trades.');
 
   var momentBatch = this.convertDates(filterBatch);
 
   var last = _.last(momentBatch);
   var first = _.first(momentBatch);
 
-  log.debug(
+//   log.debug(
     'Processing', amount, 'new trades.',
     'From',
     first.date.format('YYYY-MM-DD HH:mm:ss'),

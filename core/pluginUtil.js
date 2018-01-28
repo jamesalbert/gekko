@@ -28,10 +28,10 @@ var pluginHelper = {
           var a = require(dep.module);
         }
         catch(e) {
-          log.error('ERROR LOADING DEPENDENCY', dep.module);
+//           log.error('ERROR LOADING DEPENDENCY', dep.module);
 
           if(!e.message) {
-            log.error(e);
+//             log.error(e);
             util.die();
           }
 
@@ -78,9 +78,9 @@ var pluginHelper = {
       return next();
     }
 
-    log.info('Setting up:');
-    log.info('\t', plugin.name);
-    log.info('\t', plugin.description);
+//     log.info('Setting up:');
+//     log.info('\t', plugin.name);
+//     log.info('\t', plugin.description);
 
     var cannotLoad = pluginHelper.cannotLoad(plugin);
     if(cannotLoad)
@@ -105,7 +105,7 @@ var pluginHelper = {
     }
 
     if(!plugin.silent)
-      log.info('\n');
+//       log.info('\n');
   }
 }
 

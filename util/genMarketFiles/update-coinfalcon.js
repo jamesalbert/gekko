@@ -41,5 +41,5 @@ request(options)
   })
   .catch(err => {
 //     console.log(`Couldn't import products from CoinFalcon`);
-//     console.log(err);
+// //     console.log(err);
   });

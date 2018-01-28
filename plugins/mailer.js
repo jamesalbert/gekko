@@ -58,7 +58,7 @@ Mailer.prototype.setup = function(done) {
     } else
       this.done();
 
-    log.debug('Setup email adviser.');
+//     log.debug('Setup email adviser.');
   };
 
   if(!mailConfig.password) {
@@ -123,7 +123,7 @@ Mailer.prototype.checkResults = function(err) {
   if(err)
     log.warn('error sending email', err);
   else
-    log.info('Send advice via email.');
+//     log.info('Send advice via email.');
 };
 
 module.exports = Mailer;

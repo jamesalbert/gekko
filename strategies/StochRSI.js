@@ -53,11 +53,11 @@ method.update = function(candle) {
 method.log = function() {
   var digits = 8;
 
-  log.debug('calculated StochRSI properties for candle:');
-  log.debug('\t', 'rsi:', this.rsi.toFixed(digits));
-	log.debug("StochRSI min:\t\t" + this.lowestRSI.toFixed(digits));
-	log.debug("StochRSI max:\t\t" + this.highestRSI.toFixed(digits));
-	log.debug("StochRSI Value:\t\t" + this.stochRSI.toFixed(2));
+//   log.debug('calculated StochRSI properties for candle:');
+//   log.debug('\t', 'rsi:', this.rsi.toFixed(digits));
+// 	log.debug("StochRSI min:\t\t" + this.lowestRSI.toFixed(digits));
+// 	log.debug("StochRSI max:\t\t" + this.highestRSI.toFixed(digits));
+// 	log.debug("StochRSI Value:\t\t" + this.stochRSI.toFixed(2));
 }
 
 method.check = function() {
@@ -73,7 +73,7 @@ method.check = function() {
 
 		this.trend.duration++;
 
-		log.debug('In high since', this.trend.duration, 'candle(s)');
+// 		log.debug('In high since', this.trend.duration, 'candle(s)');
 
 		if(this.trend.duration >= this.settings.thresholds.persistence)
 			this.trend.persisted = true;
@@ -97,7 +97,7 @@ method.check = function() {
 
 		this.trend.duration++;
 
-		log.debug('In low since', this.trend.duration, 'candle(s)');
+// 		log.debug('In low since', this.trend.duration, 'candle(s)');
 
 		if(this.trend.duration >= this.settings.thresholds.persistence)
 			this.trend.persisted = true;
@@ -111,7 +111,7 @@ method.check = function() {
 	} else {
 		// trends must be on consecutive candles
 		this.trend.duration = 0;
-		log.debug('In no trend');
+// 		log.debug('In no trend');
 
 		this.advice();
 	}

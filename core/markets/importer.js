@@ -15,7 +15,7 @@ if(daterange.to) {
   var to = moment.utc(daterange.to);
 } else {
   var to = moment().utc();
-  log.debug(
+//   log.debug(
     'No end date specified for importing, setting to',
     to.format('YYYY-MM-DD HH:mm:ss')
   );
@@ -99,7 +99,7 @@ Market.prototype.processTrades = function(trades) {
   this.tradeBatcher.write(trades);
 
   if(this.done) {
-    log.info('Done importing!');
+//     log.info('Done importing!');
     this.emit('end');
     return;
   }

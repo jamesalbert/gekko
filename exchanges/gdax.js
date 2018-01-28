@@ -66,7 +66,7 @@ Trader.prototype.processError = function(funcName, error) {
   if (!error) return undefined;
 
   if (!error.message.match(recoverableErrors)) {
-    log.error(
+//     log.error(
       `[gdax.js] (${funcName}) returned an irrecoverable error: ${
         error.message
       }`
@@ -74,7 +74,7 @@ Trader.prototype.processError = function(funcName, error) {
     return new Errors.AbortError('[gdax.js] ' + error.message);
   }
 
-  log.debug(
+//   log.debug(
     `[gdax.js] (${funcName}) returned an error, retrying: ${error.message}`
   );
   return new Errors.RetryError('[gdax.js] ' + error.message);
@@ -239,7 +239,7 @@ Trader.prototype.getTrades = function(since, callback, descending) {
         if (moment.utc(last.time) < moment.utc(since)) {
           this.scanbackTid = last.trade_id;
         } else {
-          log.debug('Scanning backwards...' + last.time);
+//           log.debug('Scanning backwards...' + last.time);
           setTimeout(() => {
             let handler = cb =>
               this.gdax_public.getProductTrades(
@@ -264,7 +264,7 @@ Trader.prototype.getTrades = function(since, callback, descending) {
 
       if (this.scanbackTid) {
         // if scanbackTid is set we need to move forward again
-        log.debug(
+//         log.debug(
           'Backwards: ' +
             last.time +
             ' (' +
@@ -296,7 +296,7 @@ Trader.prototype.getTrades = function(since, callback, descending) {
           this.scanback = false;
           this.scanbackTid = 0;
 
-          log.debug('Scan finished: data found:' + this.scanbackResults.length);
+//           log.debug('Scan finished: data found:' + this.scanbackResults.length);
           callback(null, this.scanbackResults);
 
           this.scanbackResults = [];
@@ -321,8 +321,8 @@ Trader.prototype.getTrades = function(since, callback, descending) {
         _.bind(process, this)
       );
     } else {
-      log.debug('Scanning back in the history needed...');
-      log.debug(moment.utc(since).format());
+//       log.debug('Scanning back in the history needed...');
+//       log.debug(moment.utc(since).format());
     }
   }
 

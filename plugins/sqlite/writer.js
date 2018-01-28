@@ -60,7 +60,7 @@ Store.prototype.writeCandles = function() {
       VALUES (?,?,?,?,?,?,?,?,?)
     `, function(err, rows) {
         if(err) {
-          log.error(err);
+//           log.error(err);
           return util.die('DB error at INSERT: '+ err);
         }
       });

@@ -22,7 +22,7 @@ var Trader = function(config) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -112,7 +112,7 @@ Trader.prototype.buy = function(amount, price, callback) {
 
   var set = function(err, result) {
     if(err)
-      return log.error('unable to buy:', err, result);
+//       return log.error('unable to buy:', err, result);
 
     callback(null, result.result);
   }.bind(this);
@@ -126,7 +126,7 @@ Trader.prototype.sell = function(amount, price, callback) {
 
   var set = function(err, result) {
     if(err)
-      return log.error('unable to sell:', err, result);
+//       return log.error('unable to sell:', err, result);
 
     callback(null, result.result);
   }.bind(this);
@@ -150,7 +150,7 @@ Trader.prototype.checkOrder = function(order, callback) {
 Trader.prototype.cancelOrder = function(order, callback) {
   var cancel = function(err, result) {
     if(err)
-      log.error('unable to cancel order', order, '(', err, result, ')');
+//       log.error('unable to cancel order', order, '(', err, result, ')');
   }.bind(this);
 
   this.btcc.cancelOrder(cancel, order, this.pair);

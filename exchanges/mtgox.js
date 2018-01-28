@@ -26,7 +26,7 @@ Trader.prototype.buy = function(amount, price, callback) {
     this.checkUnauthorized(err);
     // if Mt. Gox is down or lagging
     if(err || result.result === 'error')
-      log.error('unable to buy (', err, result, ')');
+//       log.error('unable to buy (', err, result, ')');
 
     callback(null, result.data);
   };
@@ -38,7 +38,7 @@ Trader.prototype.sell = function(amount, price, callback) {
     this.checkUnauthorized(err);
     // if Mt. Gox is down or lagging
     if(err || result.result === 'error')
-      log.error('unable to sell (', err, result, ')');
+//       log.error('unable to sell (', err, result, ')');
 
     callback(null, result.data);
   };
@@ -69,7 +69,7 @@ Trader.prototype.getTrades = function(since, callback, descending) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -108,7 +108,7 @@ Trader.prototype.getPortfolio = function(callback) {
       return this.retry(this.getPortfolio, args);
 
     if(!('Wallets' in result.data))
-      log.error('unable to get portfolio, do I have get_info rights?');
+//       log.error('unable to get portfolio, do I have get_info rights?');
 
     var assets = [];
     _.each(result.data.Wallets, function(wallet, name) {
@@ -154,7 +154,7 @@ Trader.prototype.checkOrder = function(order, callback) {
 Trader.prototype.cancelOrder = function(order) {
   var cancel = function(err, result) {
     if(err || result.result !== 'succes')
-      log.error('unable to cancel order', order, '(', err, result, ')');
+//       log.error('unable to cancel order', order, '(', err, result, ')');
   };
 
   this.mtgox.cancel(order, _.bind(cancel, this));
@@ -211,4 +211,3 @@ Trader.getCapabilities = function () {
 }
 
 module.exports = Trader;
-

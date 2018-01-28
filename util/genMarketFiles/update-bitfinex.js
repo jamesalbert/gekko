@@ -48,7 +48,7 @@ request({
 })
 .catch(err => {
 //   console.log(`Couldn't import products from Bitfinex`);
-//   console.log(err);
+// //   console.log(err);
 });
 
   

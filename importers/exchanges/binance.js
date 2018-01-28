@@ -23,7 +23,7 @@ var fetch = () => {
 
 var handleFetch = (err, trades) => {
   if (err) {
-    log.error(`There was an error importing from Binance ${err}`);
+//     log.error(`There was an error importing from Binance ${err}`);
     fetcher.emit('done');
     return fetcher.emit('trades', []);
 }
@@ -35,7 +35,7 @@ var handleFetch = (err, trades) => {
   } else {
     // Conversion to milliseconds epoch time means we have to compensate for possible leap seconds
     var next = from.clone().add(1, 'h').subtract(1, 's');
-    log.debug('Import step returned no results, moving to the next 1h period');
+//     log.debug('Import step returned no results, moving to the next 1h period');
   }
 
   if (from.add(1, 'h') >= end) {

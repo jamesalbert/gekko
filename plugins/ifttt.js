@@ -28,7 +28,7 @@ IFTTT.prototype.setup = function(done) {
         +" I'll let you know when I got some advice";
       this.send(body);
     }else{
-      log.debug('Skipping Send message on startup')
+//       log.debug('Skipping Send message on startup')
     }
   };
   setupIFTTT.call(this)
@@ -70,9 +70,9 @@ IFTTT.prototype.send = function(content) {
     .send({value1: content})
     .end(function(err, res){
       if(err || !res){
-        log.error('IFTTT ERROR:', error)
+//         log.error('IFTTT ERROR:', error)
       }else{
-        log.info('IFTTT Message Sent')
+//         log.info('IFTTT Message Sent')
       }
     });
 };
@@ -81,7 +81,7 @@ IFTTT.prototype.checkResults = function(error) {
   if (error) {
     log.warn('error sending IFTTT', error);
   } else {
-    log.info('Send advice via IFTTT.');
+//     log.info('Send advice via IFTTT.');
   }
 };
 

@@ -37,7 +37,7 @@ Twitter.prototype.setup = function(done){
                 +asset
             this.mail(body);
         }else{
-            log.debug('Skipping Send message on startup')
+//             log.debug('Skipping Send message on startup')
         }
     };
     setupTwitter.call(this)
@@ -62,12 +62,12 @@ Twitter.prototype.processAdvice = function(advice) {
 };
 
 Twitter.prototype.mail = function(content, done) {
-    log.info("trying to tweet");
+//     log.info("trying to tweet");
     this.client.post('statuses/update', {status: content},  function(error, tweet, response) {
       if(error || !response) {
-          log.error('Pushbullet ERROR:', error)
+//           log.error('Pushbullet ERROR:', error)
       } else if(response && response.active){
-          log.info('Pushbullet Message Sent')
+//           log.info('Pushbullet Message Sent')
       }
     }); 
 };
@@ -76,7 +76,7 @@ Twitter.prototype.checkResults = function(err) {
     if(err)
         log.warn('error sending email', err);
     else
-        log.info('Send advice via email.');
+//         log.info('Send advice via email.');
 };
 
 module.exports = Twitter;

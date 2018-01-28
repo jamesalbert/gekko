@@ -23,7 +23,7 @@ var Trader = function(config) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -66,14 +66,14 @@ Trader.prototype.getPortfolio = function(callback) {
     if(_.isObject(asset) && _.isNumber(+asset.available) && !_.isNaN(+asset.available))
       assetAmount = +asset.available;
     else {
-      log.error(`Gemini did not provide ${this.asset} amount, assuming 0`);
+//       log.error(`Gemini did not provide ${this.asset} amount, assuming 0`);
       assetAmount = 0;
     }
 
     if(_.isObject(currency) && _.isNumber(+currency.available) && !_.isNaN(+currency.available))
       currencyAmount = +currency.available;
     else {
-      log.error(`Gemini did not provide ${this.currency} amount, assuming 0`);
+//       log.error(`Gemini did not provide ${this.currency} amount, assuming 0`);
       currencyAmount = 0;
     }
 
@@ -121,7 +121,7 @@ Trader.prototype.submit_order = function(type, amount, price, callback) {
     'exchange limit',
     function (err, data, body) {
       if (err) {
-        log.error('unable to ' + type, err, body);
+//         log.error('unable to ' + type, err, body);
         return this.retry(this.submit_order, args);
       }
 
@@ -174,7 +174,7 @@ Trader.prototype.cancelOrder = function(order_id, callback) {
         if(err.message === 'Order could not be cancelled.')
           return callback();
 
-        log.error('unable to cancel order', order_id, '(', err, data, '), retrying...');
+//         log.error('unable to cancel order', order_id, '(', err, data, '), retrying...');
         return this.retry(this.cancelOrder, args);
       }
 

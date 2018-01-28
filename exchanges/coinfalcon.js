@@ -35,10 +35,10 @@ Trader.prototype.retry = function(method, args, error) {
     }
   });
 
-  log.debug('[CoinFalcon] ', this.name, "Retrying...");
+//   log.debug('[CoinFalcon] ', this.name, "Retrying...");
 
   if (!error || !error.message.match(recoverableErrors)) {
-    log.error('[CoinFalcon] ', this.name, 'returned an irrecoverable error');
+//     log.error('[CoinFalcon] ', this.name, 'returned an irrecoverable error');
     _.each(args, function(arg, i) {
       if (_.isFunction(arg)) {
         arg(error, null);
@@ -62,7 +62,7 @@ Trader.prototype.getTicker = function(callback) {
   };
 
   var failure = function(err) {
-    log.error('[CoinFalcon] error getting ticker', err);
+//     log.error('[CoinFalcon] error getting ticker', err);
     callback(err, null);
   };
 
@@ -93,7 +93,7 @@ Trader.prototype.getPortfolio = function(callback) {
   };
 
   var failure = function(err) {
-    log.error('[CoinFalcon] error getting portfolio', err);
+//     log.error('[CoinFalcon] error getting portfolio', err);
     callback(err, null);
   }
 
@@ -113,7 +113,7 @@ Trader.prototype.addOrder = function(type, amount, price, callback) {
   };
 
   var failure = function(err) {
-    log.error('[CoinFalcon] unable to ' + type.toLowerCase(), err);
+//     log.error('[CoinFalcon] unable to ' + type.toLowerCase(), err);
     return this.retry(this.addOrder, args, err);
   }.bind(this);
 
@@ -148,7 +148,7 @@ Trader.prototype.getOrder = function(order, callback) {
   };
 
   var failure = function(err) {
-    log.error('[CoinFalcon] unable to getOrder', err);
+//     log.error('[CoinFalcon] unable to getOrder', err);
     callback(err, null);
   }.bind(this);
 
@@ -167,7 +167,7 @@ Trader.prototype.checkOrder = function(order, callback) {
   };
 
   var failure = function(err) {
-    log.error('[CoinFalcon] unable to checkOrder', err);
+//     log.error('[CoinFalcon] unable to checkOrder', err);
     callback(err, null);
   }.bind(this);
 
@@ -186,7 +186,7 @@ Trader.prototype.cancelOrder = function(order, callback) {
   };
 
   var failure = function(err) {
-    log.error('[CoinFalcon] unable to cancel', err);
+//     log.error('[CoinFalcon] unable to cancel', err);
     return this.retry(this.cancelOrder, args, err);
   }.bind(this);
 
@@ -220,7 +220,7 @@ Trader.prototype.getTrades = function(since, callback, descending) {
 
   var failure = function (err) {
     err = new Error(err);
-    log.error('[CoinFalcon] error getting trades', err);
+//     log.error('[CoinFalcon] error getting trades', err);
     return this.retry(this.getTrades, args, err);
   }.bind(this);
 

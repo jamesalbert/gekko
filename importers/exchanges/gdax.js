@@ -41,7 +41,7 @@ Fetcher.prototype.findFirstTrade = function(sinceTs, callback) {
   let currentId = 0;
   let sinceM = moment(sinceTs).utc();
 
-  log.info(`Scanning for the first trade ID to start batching requests, may take a few minutes ...`);
+//   log.info(`Scanning for the first trade ID to start batching requests, may take a few minutes ...`);
 
   let process = function(err, data) {
     if (err) return callback(err);
@@ -49,17 +49,17 @@ Fetcher.prototype.findFirstTrade = function(sinceTs, callback) {
     let m = moment.utc(_.first(data).time);
     let ts = m.valueOf();
     if (ts < sinceTs) {
-      log.info(`First trade ID for batching found ${currentId - SCAN_ITER_SIZE}`);
+//       log.info(`First trade ID for batching found ${currentId - SCAN_ITER_SIZE}`);
       return callback(undefined, currentId - SCAN_ITER_SIZE);
     }
 
     currentId = _.first(data).trade_id;
-    log.debug(`Have trade id ${currentId} for date ${_.first(data).time} ${sinceM.from(m, true)} to scan`);
+//     log.debug(`Have trade id ${currentId} for date ${_.first(data).time} ${sinceM.from(m, true)} to scan`);
 
     let nextScanId = currentId - SCAN_ITER_SIZE;
     if (nextScanId <= SCAN_ITER_SIZE) {
       currentId = BATCH_ITER_SIZE;
-      log.info(`First trade ID for batching found ${currentId}`);
+//       log.info(`First trade ID for batching found ${currentId}`);
       return callback(undefined, currentId);
     }
 
@@ -119,7 +119,7 @@ let fetch = () => {
 
 let handleFetch = (err, trades) => {
   if (err) {
-    log.error(`There was an error importing from GDAX ${err}`);
+//     log.error(`There was an error importing from GDAX ${err}`);
     fetcher.emit('done');
     return fetcher.emit('trades', []);
   }

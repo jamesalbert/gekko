@@ -152,7 +152,7 @@ Actor.prototype.emitRealAdvice = function() {
 }
 
 Actor.prototype.logError = function(message) {
-  log.error('Telegram ERROR:', message);
+//   log.error('Telegram ERROR:', message);
 };
 
 module.exports = Actor;

@@ -186,7 +186,7 @@ Actor.prototype.emitRealAdvice = function(receiver) {
 }
 
 Actor.prototype.logError = function(message) {
-  log.error('XMPP ERROR:', message);
+//   log.error('XMPP ERROR:', message);
 };
 
 

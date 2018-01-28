@@ -36,7 +36,7 @@ Fetcher.prototype.getTrades = function(upto, callback, descending) {
     path += `?limit=1000&start=${start}&end=${end}`;
   }
 
-  log.debug('Querying trades with: ' + path);
+//   log.debug('Querying trades with: ' + path);
   let handler = cb => this.bitfinex.makePublicRequest(path, this.handleResponse('getTrades', cb));
   util.retryCustom(retryCritical, _.bind(handler, this), _.bind(process, this));
 };
@@ -87,7 +87,7 @@ var fetch = () => {
 
 var handleFetch = (err, trades) => {
   if (err) {
-    log.error(`There was an error importing from Bitfinex ${err}`);
+//     log.error(`There was an error importing from Bitfinex ${err}`);
     fetcher.emit('done');
     return fetcher.emit('trades', []);
   }

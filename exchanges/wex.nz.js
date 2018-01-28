@@ -38,7 +38,7 @@ Trader.prototype.buy = function(amount, price, callback) {
 
   var set = function(err, data) {
     if(err || !data || !data.return)
-      return log.error('unable to buy:', err);
+//       return log.error('unable to buy:', err);
 
     callback(null, data.return.order_id);
   }.bind(this);
@@ -54,7 +54,7 @@ Trader.prototype.sell = function(amount, price, callback) {
 
   var set = function(err, data) {
     if(err || !data || !data.return)
-      return log.error('unable to sell:\n\n', err);
+//       return log.error('unable to sell:\n\n', err);
 
     callback(null, data.return.order_id);
   };
@@ -69,7 +69,7 @@ Trader.prototype.sell = function(amount, price, callback) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -102,12 +102,12 @@ Trader.prototype.getPortfolio = function(callback) {
     var currencyAmount = parseFloat( data.return.funds[this.currency.toLowerCase()] );
 
     if(!_.isNumber(assetAmount) || _.isNaN(assetAmount)) {
-      log.error(`wex.nz did not return portfolio for ${this.asset}, assuming 0.`);
+//       log.error(`wex.nz did not return portfolio for ${this.asset}, assuming 0.`);
       assetAmount = 0;
     }
 
     if(!_.isNumber(currencyAmount) || _.isNaN(currencyAmount)) {
-      log.error(`wex.nz did not return portfolio for ${this.currency}, assuming 0.`);
+//       log.error(`wex.nz did not return portfolio for ${this.currency}, assuming 0.`);
       currencyAmount = 0;
     }
 
@@ -169,7 +169,7 @@ Trader.prototype.getOrder = function(orderId, callback) {
   var args = _.toArray(arguments);
   var check = function(err, result) {
     if(err) {
-      log.error('error on getOrder', err);
+//       log.error('error on getOrder', err);
       return this.retry(this.getOrder, args);
     }
 
@@ -181,7 +181,7 @@ Trader.prototype.getOrder = function(orderId, callback) {
     });
 
     if(!order)
-      return log.error('wex.nz did not provide the order');
+//       return log.error('wex.nz did not provide the order');
 
     var price = parseFloat(order.rate);
     var amount = parseFloat(order.amount);

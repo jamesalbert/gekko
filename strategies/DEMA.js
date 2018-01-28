@@ -26,11 +26,11 @@ method.update = function(candle) {
 method.log = function() {
   var dema = this.indicators.dema;
 
-  log.debug('calculated DEMA properties for candle:');
-  log.debug('\t', 'long ema:', dema.long.result.toFixed(8));
-  log.debug('\t', 'short ema:', dema.short.result.toFixed(8));
-  log.debug('\t diff:', dema.result.toFixed(5));
-  log.debug('\t DEMA age:', dema.short.age, 'candles');
+//   log.debug('calculated DEMA properties for candle:');
+//   log.debug('\t', 'long ema:', dema.long.result.toFixed(8));
+//   log.debug('\t', 'short ema:', dema.short.result.toFixed(8));
+//   log.debug('\t diff:', dema.result.toFixed(5));
+//   log.debug('\t DEMA age:', dema.short.age, 'candles');
 }
 
 method.check = function(candle) {
@@ -41,7 +41,7 @@ method.check = function(candle) {
   var message = '@ ' + price.toFixed(8) + ' (' + diff.toFixed(5) + ')';
 
   if(diff > this.settings.thresholds.up) {
-    log.debug('we are currently in uptrend', message);
+//     log.debug('we are currently in uptrend', message);
 
     if(this.currentTrend !== 'up') {
       this.currentTrend = 'up';
@@ -50,7 +50,7 @@ method.check = function(candle) {
       this.advice();
 
   } else if(diff < this.settings.thresholds.down) {
-    log.debug('we are currently in a downtrend', message);
+//     log.debug('we are currently in a downtrend', message);
 
     if(this.currentTrend !== 'down') {
       this.currentTrend = 'down';
@@ -59,7 +59,7 @@ method.check = function(candle) {
       this.advice();
 
   } else {
-    log.debug('we are currently not in an up or down trend', message);
+//     log.debug('we are currently not in an up or down trend', message);
     this.advice();
   }
 }

@@ -30,12 +30,12 @@ var Trader = function(config) {
 Trader.prototype.retry = function(method, warn, args, error) {
   var wait = +moment.duration(30, 'seconds');
   if (error.code === 200) {
-    log.debug(`${this.name}: API rate limit exceeded! unable to call ${method}, will retry in 2 minutes`)
+//     log.debug(`${this.name}: API rate limit exceeded! unable to call ${method}, will retry in 2 minutes`)
     wait = +moment.duration(120, 'seconds');
   }
   else {
-    log.debug(JSON.stringify(error));
-    log.debug(`${this.name}: ${warn}, will retry in 30 seconds`);
+//     log.debug(JSON.stringify(error));
+//     log.debug(`${this.name}: ${warn}, will retry in 30 seconds`);
   }
 
   var self = this;
@@ -96,12 +96,12 @@ Trader.prototype.getPortfolio = function(callback) {
     var currencyAmount = parseFloat( data[this.currency + '_available'] );
 
     if(!_.isNumber(assetAmount) || _.isNaN(assetAmount)) {
-      log.error(`Quadriga did not return balance for ${this.asset}, assuming 0.`);
+//       log.error(`Quadriga did not return balance for ${this.asset}, assuming 0.`);
       assetAmount = 0;
     }
 
     if(!_.isNumber(currencyAmount) || _.isNaN(currencyAmount)) {
-      log.error(`Quadriga did not return balance for ${this.currency}, assuming 0.`);
+//       log.error(`Quadriga did not return balance for ${this.currency}, assuming 0.`);
       currencyAmount = 0;
     }
 
@@ -152,7 +152,7 @@ Trader.prototype.addOrder = function(tradeType, amount, price, callback) {
   var args = _.toArray(arguments);
 
   amount = this.roundAmount(amount);
-  log.debug(tradeType.toUpperCase(), amount, this.asset, '@', price, this.currency);
+//   log.debug(tradeType.toUpperCase(), amount, this.asset, '@', price, this.currency);
 
   var set = function(err, data) {
 
@@ -160,7 +160,7 @@ Trader.prototype.addOrder = function(tradeType, amount, price, callback) {
     if (err) return this.retry(this.addOrder, 'unable to place order', args, err);
     
     var txid = data.id;
-    log.debug('added order with txid:', txid);
+//     log.debug('added order with txid:', txid);
 
     callback(undefined, txid);
   };

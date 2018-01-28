@@ -19,7 +19,7 @@ var method = {
     if(settings.wait > i)
       return;
 
-    log.info('iteration:', i);
+//     log.info('iteration:', i);
     
     if(i % settings.each === 0)
       this.advice('short');

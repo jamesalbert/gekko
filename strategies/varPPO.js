@@ -43,11 +43,11 @@ method.log = function(candle) {
   var hist = result - signal;
   var momentumResult = this.indicators[momentumName][momentumName];
 
-  log.debug('\t', 'PPO:', result.toFixed(digits));
-  log.debug('\t', 'PPOsignal:', signal.toFixed(digits));
-  log.debug('\t', 'PPOhist:', hist.toFixed(digits));
-  log.debug('\t', momentum + ':', momentumResult.toFixed(digits));
-  log.debug('\t', 'price:', candle.close.toFixed(digits));
+//   log.debug('\t', 'PPO:', result.toFixed(digits));
+//   log.debug('\t', 'PPOsignal:', signal.toFixed(digits));
+//   log.debug('\t', 'PPOhist:', hist.toFixed(digits));
+//   log.debug('\t', momentum + ':', momentumResult.toFixed(digits));
+//   log.debug('\t', 'price:', candle.close.toFixed(digits));
 }
 
 method.check = function() {
@@ -76,7 +76,7 @@ method.check = function() {
 
     this.trend.duration++;
 
-    log.debug('In uptrend since', this.trend.duration, 'candle(s)');
+//     log.debug('In uptrend since', this.trend.duration, 'candle(s)');
 
     if(this.trend.duration >= settings.thresholds.persistence)
       this.trend.persisted = true;
@@ -100,7 +100,7 @@ method.check = function() {
 
     this.trend.duration++;
 
-    log.debug('In downtrend since', this.trend.duration, 'candle(s)');
+//     log.debug('In downtrend since', this.trend.duration, 'candle(s)');
 
     if(this.trend.duration >= settings.thresholds.persistence)
       this.trend.persisted = true;
@@ -114,7 +114,7 @@ method.check = function() {
 
   } else {
 
-    log.debug('In no trend');
+//     log.debug('In no trend');
 
     // we're not in an up nor in a downtrend
     // but for now we ignore sideways trends

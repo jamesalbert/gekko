@@ -42,16 +42,16 @@ checkClient.connect(function(err){
   if(err){
     util.die(err);
   }
-  log.debug("Check database exists: "+dbName);
+//   log.debug("Check database exists: "+dbName);
   query = checkClient.query("select count(*) from pg_catalog.pg_database where datname = $1",[dbName], 
     (err, res) => {
       if(err) {
         util.die(err);
       }
       if(res.rows[0].count == 0){ //database does not exist
-        log.debug("Database "+dbName+" does not exist");
+//         log.debug("Database "+dbName+" does not exist");
         if(mode === 'realtime') { //create database if not found
-          log.debug("Creating database "+dbName);
+//           log.debug("Creating database "+dbName);
           checkClient.query("CREATE DATABASE "+dbName,function(err){
             if(err){
               util.die(err);
@@ -60,7 +60,7 @@ checkClient.connect(function(err){
                 if(err){
                   util.die(err);
                 }
-                log.debug("Postgres connected to "+dbName);
+//                 log.debug("Postgres connected to "+dbName);
               });
             }
           });
@@ -70,13 +70,13 @@ checkClient.connect(function(err){
           util.die(`Start gekko first in realtime mode to create tables. You are currently in the '${mode}' mode.`);
         }
       }else{ //database exists
-        log.debug("Database exists: "+dbName);
+//         log.debug("Database exists: "+dbName);
         client.connect(function(err){
           checkClient.end();
           if(err){
             util.die(err);
           }
-          log.debug("Postgres connected to "+dbName);
+//           log.debug("Postgres connected to "+dbName);
         });
       }  
     });

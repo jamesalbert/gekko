@@ -136,7 +136,7 @@ Promise.all([assetPromise, assetPairsPromise])
   })
   .catch(err => {
 //     console.log(`Couldn't import products from Kraken`);
-//     console.log(err);
+// //     console.log(err);
   });
 
   

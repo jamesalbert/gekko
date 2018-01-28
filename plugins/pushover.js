@@ -35,7 +35,7 @@ Pushover.prototype.setup = function() {
         ].join('')
       );
     } else
-    log.debug('Setup pushover adviser.');
+//     log.debug('Setup pushover adviser.');
   }
     setupPushover.call(this);
 }
@@ -79,7 +79,7 @@ Pushover.prototype.checkResults = function(err) {
   if(err)
     log.warn('error sending pushover', err);
   else
-    log.info('Send advice via pushover.');
+//     log.info('Send advice via pushover.');
 }
 
 module.exports = Pushover;

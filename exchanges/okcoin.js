@@ -21,7 +21,7 @@ var Trader = function(config) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
     var wait = +moment.duration(10, 'seconds');
-    log.debug(this.name, 'returned an error, retrying..');
+//     log.debug(this.name, 'returned an error, retrying..');
 
     var self = this;
 
@@ -89,7 +89,7 @@ Trader.prototype.buy = function(raw_amount, price, callback) {
   var amount = Math.floor(raw_amount * 10000) / 10000
   var set = function(err, result) {
     if(err)
-      return log.error('unable to process order:', err, result);
+//       return log.error('unable to process order:', err, result);
 
     callback(null, result.order_id);
   }.bind(this);
@@ -101,7 +101,7 @@ Trader.prototype.sell = function(raw_amount, price, callback) {
   var amount = Math.floor(raw_amount * 10000) / 10000
   var set = function(err, result) {
     if(err)
-      return log.error('unable to process order:', err, result);
+//       return log.error('unable to process order:', err, result);
 
     callback(null, result.order_id);
   }.bind(this);
@@ -113,7 +113,7 @@ Trader.prototype.sell = function(raw_amount, price, callback) {
 Trader.prototype.checkOrder = function(order_id, callback) {
   var check = function(err, result) {
     if(err || !result.result) {
-      log.error('Perhaps the order already got filled?', '(', result, ')');
+//       log.error('Perhaps the order already got filled?', '(', result, ')');
       callback(err, !result.result);
     } else {
       callback(err, true);
@@ -126,7 +126,7 @@ Trader.prototype.checkOrder = function(order_id, callback) {
 Trader.prototype.cancelOrder = function(order_id, callback) {
   var cancel = function(err, result) {
     if(err || !result.result) {
-      return log.error('unable to cancel order ', order_id, '(', result, ')');
+//       return log.error('unable to cancel order ', order_id, '(', result, ')');
     }
 
     callback();

@@ -58,11 +58,11 @@ Trader.prototype.processError = function(funcName, error) {
   if (!error) return undefined;
 
   if (!error.message || !error.message.match(recoverableErrors)) {
-    log.error(`[binance.js] (${funcName}) returned an irrecoverable error: ${error}`);
+//     log.error(`[binance.js] (${funcName}) returned an irrecoverable error: ${error}`);
     return new Errors.AbortError('[binance.js] ' + error.message || error);
   }
 
-  log.debug(`[binance.js] (${funcName}) returned an error, retrying: ${error}`);
+//   log.debug(`[binance.js] (${funcName}) returned an error, retrying: ${error}`);
   return new Errors.RetryError('[binance.js] ' + error.message || error);
 };
 
@@ -118,7 +118,7 @@ Trader.prototype.getTrades = function(since, callback, descending) {
 
 Trader.prototype.getPortfolio = function(callback) {
   var setBalance = function(err, data) {
-    log.debug(`[binance.js] entering "setBalance" callback after api call, err: ${err}, data: ${data}`)
+//     log.debug(`[binance.js] entering "setBalance" callback after api call, err: ${err}, data: ${data}`)
     if (err) return callback(err);
 
     var findAsset = function(item) {
@@ -132,14 +132,14 @@ Trader.prototype.getPortfolio = function(callback) {
     var currencyAmount = parseFloat(_.find(data.balances, _.bind(findCurrency, this)).free);
 
     if (!_.isNumber(assetAmount) || _.isNaN(assetAmount)) {
-      log.error(
+//       log.error(
         `Binance did not return portfolio for ${this.asset}, assuming 0.`
       );
       assetAmount = 0;
     }
 
     if (!_.isNumber(currencyAmount) || _.isNaN(currencyAmount)) {
-      log.error(
+//       log.error(
         `Binance did not return portfolio for ${this.currency}, assuming 0.`
       );
       currencyAmount = 0;
@@ -165,7 +165,7 @@ Trader.prototype.getFee = function(callback) {
 
 Trader.prototype.getTicker = function(callback) {
   var setTicker = function(err, data) {
-    log.debug(`[binance.js] entering "getTicker" callback after api call, err: ${err} data: ${JSON.stringify(data)}`);
+//     log.debug(`[binance.js] entering "getTicker" callback after api call, err: ${err} data: ${JSON.stringify(data)}`);
     if (err) return callback(err);
 
     var findSymbol = function(ticker) {
@@ -222,14 +222,14 @@ Trader.prototype.getLotSize = function(tradeType, amount, price, callback) {
 }
 
 Trader.prototype.addOrder = function(tradeType, amount, price, callback) {
-  log.debug(`[binance.js] (addOrder) ${tradeType.toUpperCase()} ${amount} ${this.asset} @${price} ${this.currency}`);
+//   log.debug(`[binance.js] (addOrder) ${tradeType.toUpperCase()} ${amount} ${this.asset} @${price} ${this.currency}`);
 
   var setOrder = function(err, data) {
-    log.debug(`[binance.js] entering "setOrder" callback after api call, err: ${err} data: ${JSON.stringify(data)}`);
+//     log.debug(`[binance.js] entering "setOrder" callback after api call, err: ${err} data: ${JSON.stringify(data)}`);
     if (err) return callback(err);
 
     var txid = data.orderId;
-    log.debug(`[binance.js] added order with txid: ${txid}`);
+//     log.debug(`[binance.js] added order with txid: ${txid}`);
 
     callback(undefined, txid);
   };
@@ -250,7 +250,7 @@ Trader.prototype.addOrder = function(tradeType, amount, price, callback) {
 
 Trader.prototype.getOrder = function(order, callback) {
   var get = function(err, data) {
-    log.debug(`[binance.js] entering "getOrder" callback after api call, err ${err} data: ${JSON.stringify(data)}`);
+//     log.debug(`[binance.js] entering "getOrder" callback after api call, err ${err} data: ${JSON.stringify(data)}`);
     if (err) return callback(err);
 
     var price = parseFloat(data.price);
@@ -279,7 +279,7 @@ Trader.prototype.sell = function(amount, price, callback) {
 
 Trader.prototype.checkOrder = function(order, callback) {
   var check = function(err, data) {
-    log.debug(`[binance.js] entering "checkOrder" callback after api call, err ${err} data: ${JSON.stringify(data)}`);
+//     log.debug(`[binance.js] entering "checkOrder" callback after api call, err ${err} data: ${JSON.stringify(data)}`);
     if (err) return callback(err);
 
     var stillThere = data.status === 'NEW' || data.status === 'PARTIALLY_FILLED';
@@ -298,7 +298,7 @@ Trader.prototype.checkOrder = function(order, callback) {
 
 Trader.prototype.cancelOrder = function(order, callback) {
   var cancel = function(err, data) {
-    log.debug(`[binance.js] entering "cancelOrder" callback after api call, err ${err} data: ${JSON.stringify(data)}`);
+//     log.debug(`[binance.js] entering "cancelOrder" callback after api call, err ${err} data: ${JSON.stringify(data)}`);
     if (err) return callback(err);
     callback(undefined);
   };

@@ -28,7 +28,7 @@ Kodi.prototype.setup = function(done) {
             var message = `Watching ${this.exchange} - ${currency}/${asset}`;
             this.mail(title, message);
         } else {
-            log.debug('Skipping Send message on startup')
+//             log.debug('Skipping Send message on startup')
         }
     }
     setupKodi.call(this)
@@ -58,9 +58,9 @@ Kodi.prototype.mail = function(title, message, done) {
 
     request(options, (error, response, body) => {
         if (!error) {
-            log.info('Kodi message sent')
+//             log.info('Kodi message sent')
         } else {
-            log.debug(`Kodi ${error}`)
+//             log.debug(`Kodi ${error}`)
         }
     })
 }

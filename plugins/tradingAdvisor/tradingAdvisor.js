@@ -43,7 +43,7 @@ Actor.prototype.setupTradingMethod = function() {
   if(!fs.existsSync(dirs.methods + this.methodName + '.js'))
     util.die('Gekko can\'t find the strategy "' + this.methodName + '"');
 
-  log.info('\t', 'Using the strategy: ' + this.methodName);
+//   log.info('\t', 'Using the strategy: ' + this.methodName);
 
   var method = require(dirs.methods + this.methodName);
 

@@ -58,7 +58,7 @@ Actor.prototype.init = function(done) {
 }
 
 Actor.prototype.emit = function(channel, message) {
-  log.debug('Going to publish to redis channel:', channel);
+//   log.debug('Going to publish to redis channel:', channel);
 
   var data = JSON.stringify(message);
   this.client.publish(channel, data);

@@ -51,7 +51,7 @@ Indicator.prototype.calculate = function(tp) {
         
     var avgtp = this.TP.result;
     if (typeof(avgtp) == 'boolean') {
-        log.error("Failed to get average tp from indicator.");
+//         log.error("Failed to get average tp from indicator.");
         return;
     }
 
@@ -73,7 +73,7 @@ Indicator.prototype.calculate = function(tp) {
 
     this.result = (this.tp - avgtp) / (this.constant * this.mean);
 
-    // log.debug("===\t", this.mean, "\t", this.tp, '\t', this.TP.result, "\t", sum, "\t", avgtp, '\t', this.result.toFixed(2));
+//     // log.debug("===\t", this.mean, "\t", this.tp, '\t', this.TP.result, "\t", sum, "\t", avgtp, '\t', this.result.toFixed(2));
 }
 
 module.exports = Indicator;

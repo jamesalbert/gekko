@@ -30,7 +30,7 @@ Reader.prototype.mostRecentWindow = function(from, to, next) {
       if (err.message.indexOf(' does not exist') !== -1)
         return next(false);
 
-      log.error(err);
+//       log.error(err);
       return util.die('DB error while reading mostRecentWindow');
     }
   });

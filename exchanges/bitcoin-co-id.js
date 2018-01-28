@@ -30,7 +30,7 @@ Trader.prototype.roundAmount = function(amount) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -78,7 +78,7 @@ Trader.prototype.getPortfolio = function(callback) {
       !_.isNumber(assetAmount) || _.isNaN(assetAmount) ||
       !_.isNumber(currencyAmount) || _.isNaN(currencyAmount)
     ) {
-      return log.error('account balance error: Gekko is unable to trade with ',this.currency.toUpperCase(),':',currencyAmount,' or ',this.asset.toUpperCase(),':',assetAmount);
+//       return log.error('account balance error: Gekko is unable to trade with ',this.currency.toUpperCase(),':',currencyAmount,' or ',this.asset.toUpperCase(),':',assetAmount);
     }
     var portfolio = [
       { name: this.currency.toUpperCase(), amount: currencyAmount - currencyHold},
@@ -146,7 +146,7 @@ Trader.prototype.buy = function(amount, price, callback) {
     else if(!err && !_.isEmpty(data.errorMessage))
       err = data.errorMessage;
     if(err)
-      return log.error('unable to buy', err);
+//       return log.error('unable to buy', err);
   callback(null, data.return.order_id);
   }.bind(this);
   this.bitcoincoid.createOrders(
@@ -171,7 +171,7 @@ Trader.prototype.sell = function(amount, price, callback) {
     else if(!err && !_.isEmpty(data.errorMessage))
       err = data.errorMessage;
     if(err)
-      return log.error('unable to sell', err)
+//       return log.error('unable to sell', err)
     callback(null, data.return.order_id);
   }.bind(this);
   this.bitcoincoid.createOrders(
@@ -241,7 +241,7 @@ Trader.prototype.cancelOrder = function(order, callback) {
   var cancel = function(err, data) {
 
     if(err){
-       return log.error('unable to cancel order: ',order, '(', err, '), retrying...');
+//        return log.error('unable to cancel order: ',order, '(', err, '), retrying...');
        this.retry(this.cancelOrder, args);
     }
     callback();

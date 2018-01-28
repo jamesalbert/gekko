@@ -18,7 +18,7 @@ var fetcher = new Fetcher(config.watch);
 
 var fetch = () => {
   fetcher.import = true;
-  log.debug('[CoinFalcon] Getting trades from: ', from);
+//   log.debug('[CoinFalcon] Getting trades from: ', from);
   fetcher.getTrades(from, handleFetch);
 };
 
@@ -28,7 +28,7 @@ var handleFetch = (unk, trades) => {
     var next = last.clone();
   } else {
     var next = from.clone().add(1, 'h');
-    log.debug('Import step returned no results, moving to the next 1h period');
+//     log.debug('Import step returned no results, moving to the next 1h period');
   }
 
   if (from.add(1, 'h') >= end) {

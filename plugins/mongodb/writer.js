@@ -75,7 +75,7 @@ var processAdvice = function processAdvice (advice) {
     return;
   }
 
-  log.debug(`Writing advice '${advice.recommendation}' to database.`);
+//   log.debug(`Writing advice '${advice.recommendation}' to database.`);
   var mAdvice = {
     time: moment().unix(),
     marketTime: this.marketTime,
@@ -89,12 +89,12 @@ var processAdvice = function processAdvice (advice) {
 }
 
 if (config.adviceWriter.enabled) {
-  log.debug('Enabling adviceWriter.');
+//   log.debug('Enabling adviceWriter.');
   Store.prototype.processAdvice = processAdvice;
 }
 
 if (config.candleWriter.enabled) {
-  log.debug('Enabling candleWriter.');
+//   log.debug('Enabling candleWriter.');
   Store.prototype.processCandle = processCandle;
   Store.prototype.finalize = finalize;
 }

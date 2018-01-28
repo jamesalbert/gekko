@@ -16,7 +16,7 @@ var method = {
   log: _.noop,
   check: function() {
 
-    log.info('iteration:', i);
+//     log.info('iteration:', i);
     if(settings.wait === i)
       this.advice(settings.advice);
 

@@ -23,7 +23,7 @@ var Trader = function(config) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -68,7 +68,7 @@ Trader.prototype.getFee = function(callback) {
 Trader.prototype.buy = function(amount, price, callback) {
   var set = function(result) {
     if(!result)
-      return log.error('unable to buy:', result);
+//       return log.error('unable to buy:', result);
 
     callback(null, result.order_id);
   };
@@ -85,7 +85,7 @@ Trader.prototype.buy = function(amount, price, callback) {
 Trader.prototype.sell = function(amount, price, callback) {
   var set = function(result) {
     if(!result)
-      return log.error('unable to sell:', result);
+//       return log.error('unable to sell:', result);
 
     callback(null, result.order_id);
   };
@@ -105,7 +105,7 @@ Trader.prototype.checkOrder = function(order, callback) {
 Trader.prototype.cancelOrder = function(order, callback) {
   var cancel = function(result) {
     if(!result)
-      log.error('unable to cancel order', order, '(', result, ')');
+//       log.error('unable to cancel order', order, '(', result, ')');
   };
 
   this.zaif.cancelorder(order).then(_.bind(cancel, this));

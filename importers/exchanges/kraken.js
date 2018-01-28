@@ -38,7 +38,7 @@ var fetch = () => {
 
 var handleFetch = (err, trades) => {
     if (err) {
-        log.error(`There was an error importing from Kraken ${err}`);
+//         log.error(`There was an error importing from Kraken ${err}`);
         fetcher.emit('done');
         return fetcher.emit('trades', []);
     }
@@ -47,7 +47,7 @@ var handleFetch = (err, trades) => {
     lastId = _.last(trades).tid
 
     if(last < from) {
-        log.debug('Skipping data, they are before from date', last.format());
+//         log.debug('Skipping data, they are before from date', last.format());
         return fetch();
     }
 
@@ -75,5 +75,3 @@ module.exports = function (daterange) {
         fetch: fetch
     }
 }
-
-

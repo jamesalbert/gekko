@@ -23,7 +23,7 @@ var Trader = function(config) {
 // waiting 10 seconds
 Trader.prototype.retry = function(method, args) {
   var wait = +moment.duration(10, 'seconds');
-  log.debug(this.name, 'returned an error, retrying..');
+//   log.debug(this.name, 'returned an error, retrying..');
 
   var self = this;
 
@@ -54,7 +54,7 @@ Trader.prototype.getPortfolio = function(callback) {
       if(err.meta && err.meta.reason === 'API key not found')
         util.die('Bitstamp says this API keys is invalid..');
 
-      log.error('BITSTAMP API ERROR:', err);
+//       log.error('BITSTAMP API ERROR:', err);
       return this.retry(this.getPortfolio, args);
     }
 
@@ -90,7 +90,7 @@ Trader.prototype.buy = function(amount, price, callback) {
   var args = _.toArray(arguments);
   var set = function(err, result) {
     if(err || result.status === "error") {
-      log.error('unable to buy:', err, result.reason, 'retrying...');
+//       log.error('unable to buy:', err, result.reason, 'retrying...');
       return this.retry(this.buy, args);
     }
 
@@ -117,7 +117,7 @@ Trader.prototype.sell = function(amount, price, callback) {
   var args = _.toArray(arguments);
   var set = function(err, result) {
     if(err || result.status === "error") {
-      log.error('unable to sell:', err, result.reason, 'retrying...');
+//       log.error('unable to sell:', err, result.reason, 'retrying...');
       return this.retry(this.sell, args);
     }
 
@@ -150,7 +150,7 @@ Trader.prototype.getOrder = function(id, callback) {
       err = data.error;
 
     if(err) {
-      log.error('Unable to get order', order, JSON.stringify(err));
+//       log.error('Unable to get order', order, JSON.stringify(err));
       return this.retry(this.getOrder, args);
     }
 
@@ -190,7 +190,7 @@ Trader.prototype.cancelOrder = function(order, callback) {
   var args = _.toArray(arguments);
   var cancel = function(err, result) {
     if(err || !result) {
-      log.error('unable to cancel order', order, '(', err, result, ')');
+//       log.error('unable to cancel order', order, '(', err, result, ')');
       return this.retry(this.cancelOrder, args);
     }
 

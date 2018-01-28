@@ -45,11 +45,11 @@ Trader.prototype.processError = function(funcName, error) {
   if (!error) return undefined;
 
   if (!error.message.match(recoverableErrors)) {
-    log.error(`[bitfinex.js] (${funcName}) returned an irrecoverable error: ${error.message}`);
+//     log.error(`[bitfinex.js] (${funcName}) returned an irrecoverable error: ${error.message}`);
     return new Errors.AbortError('[bitfinex.js] ' + error.message);
   }
 
-  log.debug(`[bitfinex.js] (${funcName}) returned an error, retrying: ${error.message}`);
+//   log.debug(`[bitfinex.js] (${funcName}) returned an error, retrying: ${error.message}`);
   return new Errors.RetryError('[bitfinex.js] ' + error.message);
 };
 
@@ -74,14 +74,14 @@ Trader.prototype.getPortfolio = function(callback) {
     if(_.isObject(asset) && _.isNumber(+asset.available) && !_.isNaN(+asset.available))
       assetAmount = +asset.available;
     else {
-      log.error(`Bitfinex did not provide ${this.asset} amount, assuming 0`);
+//       log.error(`Bitfinex did not provide ${this.asset} amount, assuming 0`);
       assetAmount = 0;
     }
 
     if(_.isObject(currency) && _.isNumber(+currency.available) && !_.isNaN(+currency.available))
       currencyAmount = +currency.available;
     else {
-      log.error(`Bitfinex did not provide ${this.currency} amount, assuming 0`);
+//       log.error(`Bitfinex did not provide ${this.currency} amount, assuming 0`);
       currencyAmount = 0;
     }
 

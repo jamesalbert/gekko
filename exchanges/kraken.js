@@ -52,11 +52,11 @@ Trader.prototype.processError = function(funcName, error) {
   if (!error) return undefined;
 
   if (!error.message.match(recoverableErrors)) {
-    log.error(`[kraken.js] (${funcName}) returned an irrecoverable error: ${error.message}`);
+//     log.error(`[kraken.js] (${funcName}) returned an irrecoverable error: ${error.message}`);
     return new Errors.AbortError('[kraken.js] ' + error.message);
   }
 
-  log.debug(`[kraken.js] (${funcName}) returned an error, retrying: ${error.message}`);
+//   log.debug(`[kraken.js] (${funcName}) returned an error, retrying: ${error.message}`);
   return new Errors.RetryError('[kraken.js] ' + error.message);
 };
 
@@ -115,18 +115,18 @@ Trader.prototype.getTrades = function(since, callback, descending) {
 Trader.prototype.getPortfolio = function(callback) {
   var setBalance = function(err, data) {
     if(err) return callback(err);
-    log.debug('[kraken.js] entering "setBalance" callback after kraken-api call, data:' , data);
+//     log.debug('[kraken.js] entering "setBalance" callback after kraken-api call, data:' , data);
 
     var assetAmount = parseFloat( data.result[this.market.prefixed[1]] );
     var currencyAmount = parseFloat( data.result[this.market.prefixed[0]] );
 
     if(!_.isNumber(assetAmount) || _.isNaN(assetAmount)) {
-      log.error(`Kraken did not return portfolio for ${this.asset}, assuming 0.`);
+//       log.error(`Kraken did not return portfolio for ${this.asset}, assuming 0.`);
       assetAmount = 0;
     }
 
     if(!_.isNumber(currencyAmount) || _.isNaN(currencyAmount)) {
-      log.error(`Kraken did not return portfolio for ${this.currency}, assuming 0.`);
+//       log.error(`Kraken did not return portfolio for ${this.currency}, assuming 0.`);
       currencyAmount = 0;
     }
 
@@ -190,13 +190,13 @@ Trader.prototype.addOrder = function(tradeType, amount, price, callback) {
   amount = this.roundAmount(amount);
   price = this.roundAmount(price); // but the link talks about rounding price... And I had the bug
 
-  log.debug('[kraken.js] (addOrder)', tradeType.toUpperCase(), amount, this.asset, '@', price, this.currency);
+//   log.debug('[kraken.js] (addOrder)', tradeType.toUpperCase(), amount, this.asset, '@', price, this.currency);
 
   var setOrder = function(err, data) {
     if(err) return callback(err);
     
     var txid = data.result.txid[0];
-    log.debug('[kraken.js] (addOrder) added order with txid:', txid);
+//     log.debug('[kraken.js] (addOrder) added order with txid:', txid);
 
     callback(undefined, txid);
   };

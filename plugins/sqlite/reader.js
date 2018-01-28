@@ -31,7 +31,7 @@ Reader.prototype.mostRecentWindow = function(from, to, next) {
       if(err.message.split(':')[1] === ' no such table')
         return next(false);
 
-      log.error(err);
+//       log.error(err);
       return util.die('DB error while reading mostRecentWindow');
     }
 

@@ -23,7 +23,7 @@ Slack.prototype.setup = function(done) {
           const body = this.createResponse("#439FE0","Gekko started!") ;
           this.send(body);
         }else{
-            log.debug('Skipping Send message on startup')
+//             log.debug('Skipping Send message on startup')
         }
     };
     setupSlack.call(this)
@@ -47,9 +47,9 @@ Slack.prototype.processAdvice = function(advice) {
 Slack.prototype.send = function(content, done) {
     this.slack.chat.postMessage(slackConfig.channel, "", content, (error, response) => {
       if (error || !response) {
-        log.error('Slack ERROR:', error);
+//         log.error('Slack ERROR:', error);
       } else {
-        log.info('Slack Message Sent');
+//         log.info('Slack Message Sent');
       }
     });
 };
@@ -58,7 +58,7 @@ Slack.prototype.checkResults = function(error) {
     if (error) {
         log.warn('error sending slack', error);
     } else {
-        log.info('Send advice via slack.');
+//         log.info('Send advice via slack.');
     }
 };
 

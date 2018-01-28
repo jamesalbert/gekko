@@ -17,7 +17,7 @@ var reader = new Reader();
 
 // todo: rewrite with generators or async/await..
 var scan = function(done) {
-  log.info('Scanning local history for backtestable dateranges.');
+//   log.info('Scanning local history for backtestable dateranges.');
 
   reader.tableExists('candles', (err, exists) => {
 
@@ -37,12 +37,12 @@ var scan = function(done) {
 
       var optimal = (last - first) / 60;
 
-      log.debug('Available', res.available);
-      log.debug('Optimal', optimal);
+//       log.debug('Available', res.available);
+//       log.debug('Optimal', optimal);
 
       // There is a candle for every minute
       if(res.available === optimal + 1) {
-        log.info('Gekko is able to fully use the local history.');
+//         log.info('Gekko is able to fully use the local history.');
         return done(false, [{
           from: first,
           to: last
@@ -53,7 +53,7 @@ var scan = function(done) {
 
       var missing = optimal - res.available + 1;
 
-      log.info(`The database has ${missing} candles missing, Figuring out which ones...`);
+//       log.info(`The database has ${missing} candles missing, Figuring out which ones...`);
       
       var iterator = {
         from: last - (BATCH_SIZE * 60),

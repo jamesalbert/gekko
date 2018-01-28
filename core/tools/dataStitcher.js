@@ -46,7 +46,7 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
 
   this.reader = new Reader;
 
-  log.info(
+//   log.info(
     '\tThe trading method requests',
     requiredHistory,
     'minutes of historic data. Checking availablity..'
@@ -59,16 +59,16 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
     // now we know what data is locally available, what
     // data would we need from the exchange?
     if(!localData) {
-      log.info('\tNo usable local data available, trying to get as much as possible from the exchange..');
+//       log.info('\tNo usable local data available, trying to get as much as possible from the exchange..');
       var idealExchangeStartTime = idealStartTime.clone();
       var idealExchangeStartTimeTS = idealExchangeStartTime.unix();
     }
     else {
-      log.debug('\tAvailable local data:');
-      log.debug('\t\tfrom:', this.ago(localData.from));
-      log.debug('\t\tto:', this.ago(localData.to));
+//       log.debug('\tAvailable local data:');
+//       log.debug('\t\tfrom:', this.ago(localData.from));
+//       log.debug('\t\tto:', this.ago(localData.to));
 
-      log.info('\tUsable local data available, trying to match with exchange data..')
+//       log.info('\tUsable local data available, trying to match with exchange data..')
       // local data is available, we need the next minute
 
 
@@ -89,16 +89,16 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
     var minutesAgo = endTime.diff(idealExchangeStartTime, 'minutes');
     var maxMinutesAgo = 4 * 60; // 4 hours
     if(minutesAgo > maxMinutesAgo) {
-      log.info('\tPreventing Gekko from requesting', minutesAgo, 'minutes of history.');
+//       log.info('\tPreventing Gekko from requesting', minutesAgo, 'minutes of history.');
       idealExchangeStartTime = endTime.clone().subtract(maxMinutesAgo, 'minutes');
       idealExchangeStartTimeTS = idealExchangeStartTime.unix();
     }
 
-    log.debug('\tFetching exchange data since', this.ago(idealExchangeStartTimeTS))
+//     log.debug('\tFetching exchange data since', this.ago(idealExchangeStartTimeTS))
     this.checkExchangeTrades(idealExchangeStartTime, function(err, exchangeData) {
-      log.debug('\tAvailable exchange data:');
-      log.debug('\t\tfrom:', this.ago(exchangeData.from));
-      log.debug('\t\tto:', this.ago(exchangeData.to));
+//       log.debug('\tAvailable exchange data:');
+//       log.debug('\t\tfrom:', this.ago(exchangeData.from));
+//       log.debug('\t\tto:', this.ago(exchangeData.to));
 
       // in case we have limited local data, and the
       // exchange would offer more than we have: ignore
@@ -108,17 +108,17 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
         exchangeData &&
         exchangeData.from < localData.from
       ) {
-        log.debug('\tExchange offered more data than locally available. Ignoring local data');
+//         log.debug('\tExchange offered more data than locally available. Ignoring local data');
         localData = false;
       }
 
       var stitchable = localData && exchangeData.from <= localData.to;
       if(stitchable) {
-        log.debug('\tStitching datasets');
+//         log.debug('\tStitching datasets');
 
         // we can combine local data with exchange data
         if(idealStartTime.unix() >= localData.from) {
-          log.info(
+//           log.info(
             '\tFull history locally available.',
             'Seeding the trading method with all required historical candles.'
           );
@@ -127,11 +127,11 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
 
           // stitchable but not enough
 
-          log.info(
+//           log.info(
             '\tPartial history locally available, but',
             Math.round((localData.from - idealStartTime.unix()) / 60),
             'minutes are missing.')
-          log.info('\tSeeding the trading method with',
+//           log.info('\tSeeding the trading method with',
             'partial historical data (Gekko needs more time before',
             'it can give advice).'
           );
@@ -144,22 +144,22 @@ Stitcher.prototype.prepareHistoricalData = function(done) {
           .subtract(1, 'minute')
           .unix();
 
-        log.debug('\tSeeding with:');
-        log.debug('\t\tfrom:', this.ago(from));
-        log.debug('\t\tto:', this.ago(to));
+//         log.debug('\tSeeding with:');
+//         log.debug('\t\tfrom:', this.ago(from));
+//         log.debug('\t\tto:', this.ago(to));
         return this.seedLocalData(from, to, done);
 
       } else if(!stitchable) {
-        log.debug('\tUnable to stitch datasets.')
+//         log.debug('\tUnable to stitch datasets.')
         // we cannot use any local data..
-        log.info(
+//         log.info(
           '\tNot seeding locally available data to the trading method.'
         );
 
         if(exchangeData.from < idealExchangeStartTimeTS) {
-          log.info('\tHowever the exchange returned enough data anyway!');
+//           log.info('\tHowever the exchange returned enough data anyway!');
         } else if(localData) {
-          log.info(
+//           log.info(
             '\tThe exchange does not return enough data.',
             Math.round((localData.from - idealStartTime.unix()) / 60),
             'minutes are still missing.'

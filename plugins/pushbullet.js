@@ -36,7 +36,7 @@ Pushbullet.prototype.setup = function(done){
                 +" I'll let you know when I got some advice";
             this.mail(title, body);
         }else{
-            log.debug('Skipping Send message on startup')
+//             log.debug('Skipping Send message on startup')
         }
     };
     setupPushBullet.call(this)
@@ -71,9 +71,9 @@ Pushbullet.prototype.mail = function(subject, content, done) {
     var pusher = new pushbullet(pushbulletConfig.key);
     pusher.note(pushbulletConfig.email, subject, content, function(error, response) {
         if(error || !response) {
-            log.error('Pushbullet ERROR:', error)
+//             log.error('Pushbullet ERROR:', error)
         } else if(response && response.active){
-            log.info('Pushbullet Message Sent')
+//             log.info('Pushbullet Message Sent')
         }
     });
 };
@@ -82,7 +82,7 @@ Pushbullet.prototype.checkResults = function(err) {
     if(err)
         log.warn('error sending email', err);
     else
-        log.info('Send advice via email.');
+//         log.info('Send advice via email.');
 };
 
 module.exports = Pushbullet;
