@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -d /node_modules ]; then
+if [ -d /node_modules && ! -d /usr/src/app/node_modules ]; then
   mv /node_modules /usr/src/app
 fi
 
